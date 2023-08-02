@@ -10,22 +10,118 @@
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css"
     />
-    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body class="font-pretendard">
     <div class="mx-auto min-w-[320px] max-w-[599px]">
+      <header class="box-content pb-10">
+        <!-- 최상단 통신상태 및 시간표시 -->
+        <div
+          class="fixed top-0 z-50 flex w-full max-w-[599px] items-center bg-white px-[18px] py-2"
+        >
+          <time datetime="2023-07-28T03:15" class="font-semibold">3:15</time>
+          <div class="flex-grow">
+            <img
+              src="/assets/icons/position.svg"
+              alt="/"
+              class="pl-1"
+              aria-hidden="true"
+            />
+          </div>
+          <img src="/assets/icons/battery.svg" alt="/" aria-hidden="true" />
+          <span class="px-1 text-xs font-bold" aria-hidden="true">LTE</span>
+          <img src="/assets/icons/4g.svg" alt="" aria-hidden="true" />
+        </div>
+      </header>
+      <!-- 하단 공통 내비게이션 -->
+      <nav
+        class="fixed bottom-0 z-50 w-full max-w-[599px] bg-white px-[17px] pb-[10px]"
+      >
+        <!-- 공통내비 -->
+        <h2 class="sr-only">메인 메뉴</h2>
+        <ul class="flex justify-between">
+          <li class="mr-[8px] self-end">
+            <a
+              href="/pages/theme/map.html"
+              class="flex flex-col items-center justify-center px-3 py-2"
+            >
+              <img
+                src="/assets/icons/map.svg"
+                alt=""
+                aria-hidden="true"
+                class="w-[22px]"
+              />
+              <span class="text-xs tracking-tighter">지도</span>
+            </a>
+          </li>
+          <li class="mr-[2px] self-end">
+            <a
+              href="/pages/theme/themeEnroll2.html"
+              class="flex flex-col items-center px-3 py-2"
+            >
+              <img
+                src="/assets/icons/save.svg"
+                alt=""
+                aria-hidden="true"
+                class="mt-[2px] w-[22px]"
+              />
+              <span class="mt-[3px] text-xs tracking-tighter">저장</span>
+            </a>
+          </li>
+          <li class="self-end">
+            <a
+              href="/pages/theme/map.html"
+              class="flex flex-col items-center justify-center px-3 py-2"
+            >
+              <img
+                src="/assets/icons/subway.svg"
+                alt=""
+                aria-hidden="true"
+                class="mt-1 w-6"
+              />
+              <span class="mt-[2px] text-xs tracking-tighter">대중교통</span>
+            </a>
+          </li>
+          <li class="self-end">
+            <a
+              href="/pages/theme/map.html"
+              class="flex flex-col items-center justify-center px-3 py-2"
+            >
+              <img
+                src="/assets/icons/car.svg"
+                alt=""
+                aria-hidden="true"
+                class="w-7"
+              />
+              <span class="mt-[1px] text-xs tracking-tighter">내비게이션</span>
+            </a>
+          </li>
+          <li class="self-end">
+            <a
+              href="/pages/theme/themepage.html"
+              class="flex flex-col items-center justify-center px-3 py-2"
+            >
+              <img
+                src="/assets/icons/my.svg"
+                alt=""
+                aria-hidden="true"
+                class="mt-[2px] w-6"
+              />
+              <span class="mt-1 text-xs tracking-tighter">MY</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- //하단 공통내비게이션-->
       <section class="bg-gray/500">
         <div class="headerArea flex justify-between p-2">
           <button>
-            <img
-              src="./../../assets/icons/left-white.svg"
-              alt="뒤로가기 버튼"
-            />
+            <img src="/assets/icons/left-white.svg" alt="뒤로가기 버튼" />
           </button>
           <button
             class="flex items-center rounded-full border border-gray/300 px-3 py-2 text-xs text-white transition hover:border-lightblue/300 hover:bg-lightblue/300"
           >
-            <i><img src="./../../assets/icons/check.svg" alt="체크 아이콘" /></i
+            <i><img src="/assets/icons/check.svg" alt="체크 아이콘" /></i
             ><span>등록</span>
           </button>
         </div>
@@ -54,10 +150,7 @@
         <button
           class="m-auto block flex items-center gap-1 rounded-full border border-white px-3 py-2 text-base text-white"
         >
-          <i
-            ><img
-              src="./../../assets/icons/photo-white.svg"
-              alt="카메라 아이콘" /></i
+          <i><img src="/assets/icons/photo-white.svg" alt="카메라 아이콘" /></i
           ><span>커버변경</span>
           <span class="text-xs text-gray-300">필수</span>
         </button>
@@ -82,14 +175,13 @@
               내가 작성한 리뷰를 추가해<br />
               새로운 테마 리스트를 만들어보세요.
             </p>
-            <button
-              class="addReviewBtn m-auto mt-4 flex items-center gap-2 rounded-full bg-lightblue/300 px-4 py-2 text-xs text-white"
+            <a
+              href="/pages/theme/themepage.html"
+              class="addReviewBtn m-auto mt-4 flex items-center justify-center gap-2 rounded-full bg-lightblue/300 px-4 py-2 text-xs text-white"
             >
-              <i
-                ><img src="./../../assets/icons/plus.svg" alt="플러스 아이콘"
-              /></i>
+              <i><img src="/assets/icons/plus.svg" alt="플러스 아이콘" /></i>
               <span>리뷰 추가하기</span>
-            </button>
+            </a>
           </div>
         </div>
       </section>

@@ -4,111 +4,155 @@ import {
   insertLast,
   delayP,
   tiger,
+  attr,
+  addClass,
+  removeClass,
 } from "/lib/index.js";
 
 const nav = $("nav");
-const list = getNodes("nav ul li");
+const navList = getNodes("nav ul li");
 
 function onHandleActive(e) {
   let target = e.target.closest("li");
 
-  if (!target || !list) return;
+  if (!target || !navList) return;
 
   target.classList.add("is-activeNav");
 }
 nav.addEventListener("click", onHandleActive);
 
-const tabList = document.querySelectorAll(".topNavItem");
-const tabConts = document.querySelectorAll(".tabCont");
+// const words = [
+//   "spray",
+//   "limit",
+//   "elite",
+//   "exuberant",
+//   "destruction",
+//   "present",
+// ];
 
-for (let i = 0; i < tabList.length; i++) {
-  tabList[i].querySelector("a").addEventListener("click", function (e) {
-    e.preventDefault();
-    for (let j = 0; j < tabConts.length; j++) {
-      tabList[j]
-        .querySelector("a")
-        .classList.remove(
-          "is-active",
-          "border-b-2",
-          "border-lightblue/300",
-          "text-lightblue/300",
-        );
-      tabConts[j].style.display = "none";
-    }
-    this.classList.add(
-      "is-active",
-      "border-b-2",
-      "border-lightblue/300",
-      "text-lightblue/300",
-    );
-    tabConts[i].style.display = "block";
-  });
-}
+// const result = words.filter((word) => word.length > 6);
 
-const reviewList = $(".reviewList");
+// /* 요소 걸러내기 --------------------------- */
+
+// // filter : 배열을 반환
+// const filter = people.filter((item) => {
+//   return item.id > 2;
+// });
+
+// console.log(filter);
+
+// console.log(result);
+// // Expected output: Array ["exuberant", "destruction", "present"]
+
+const cardList = $(".cardList");
 
 async function renderUserList() {
   try {
     await delayP();
 
-    const response = await tiger.get("http://localhost:3000/allReview");
+    const response = await tiger.get("http://localhost:3000/followRecent");
     const userData = response.data;
     console.log(userData);
 
-    userData.forEach((item) => renderUserCard(reviewList, item));
+    userData.forEach((item) => renderUserCard(cardList, item));
   } catch (err) {
     console.log(err);
-    renderEmptyCard(reviewList);
+    renderEmptyCard(cardList);
     // location.href = '404.html'
   }
 }
 
 renderUserList();
 
+const tabMenu = $(".tabMenu");
+const tabMenuUl = $(".tabMenu ul");
+const list = [...tabMenuUl.children];
+
+async function filter(e) {
+  const response = await tiger.get("http://localhost:3000/followRecent");
+  const userData = response.data;
+  userData.forEach((item) => renderUserCard(cardList, item));
+  //let result = userData.filter((value) => value.dataFilter == filter);
+  //console.log(result);
+  const target = e.target.closest("li");
+  const anchor = e.target.closest("button");
+  const filter = attr(target, "data-filter");
+  const filterValue = userData.filter((value) => value.dataFilter);
+  console.log(filterValue);
+  let result = userData.filter(
+    (value) => value.dataFilter == anchor.textContent,
+  );
+
+  let objElem = userData[0];
+  let objKey = Object.keys(objElem)[0]; //key를구하고
+  let objValue = objElem[Object.keys(objElem)[0]];
+  console.log(objValue);
+
+  //console.log(result);
+
+  // for (const item of userData) {
+  //   if (userData.filterValue.includes(anchor.textContent)) {
+  //     item.style.display = "block";
+  //   } else {
+  //     item.style.display = "none";
+  //   }
+  // }
+
+  // clearContents(cardList);
+  // renderUserCard(cardList, result);
+
+  list.forEach((li) => {
+    removeClass(li, "bg-gray-500");
+    removeClass(li, "text-white");
+  });
+  addClass(target, "bg-gray-500");
+  addClass(target, "text-white");
+}
+
+tabMenu.addEventListener("click", filter);
+
 //생성 (생성하는 함수는 export할 필요 x)
 function createUserCard({
-  userImage = "",
-  userImageAlt = "",
-  userId = "",
-  visitNum = "",
-  date = "",
+  dataFilter = "",
+  store = "",
+  location = "",
+  description = "",
+  hashTag = "",
   image = "",
   alt = "",
-  description = "",
 }) {
   const template = `
-  <li class="reviewItem border-b border-gray/300 px-4 py-3">
-    <a href="#" class="flex gap-4">
-      <div>
-        <p
-          class="line-clamp-4 overflow-hidden text-ellipsis text-xs text-gray/500"
-        >
-          ${description}
-        </p>
-      </div>
-      <figure
-        class="flex-shrink-0 basis-20 h20 overflow-hidden rounded posRelative"
+    <li
+    class="reviewItem bd-gray-200 mt4 overflow-hidden rounded2xl border bg-white p3 shadowBase"
+    data-filter="${dataFilter}"
+  >
+    <a href="/" class="pl-3 pr-3">
+      <h3 class="tex-base font-semibold">
+        ${store}
+        <span class="place text-xs text-gray300">${location}</span>
+      </h3>
+      <div
+        class="mt-3 flex flex-shrink-0 flex-grow items-center justify-between gap4"
       >
-        <img class="posAbsolute top50 left50 translate50 minWidth28"
-          src="${image}"
-          alt="${alt}"
-        />
-      </figure>
-    </a>
-    <a href="#" class="userInfo mt-2 flex items-center gap-2">
-      <figure
-        class="userImage h-7 w-7 flex-shrink-0 overflow-hidden rounded-full bg-lightblue/900"
-      >
-        <img src="${userImage}" alt="${userImageAlt}" />
-      </figure>
-      <div class="userProfile flex-shrink-0 font-semibold">
-        <p class="userId text-xs">${userId}</p>
-        <p class="visitInfo text-xs text-gray/300">
-          <span class="date">${date}</span> •
-          <span class="visitNum"><strong>${visitNum}</strong>번째 방문</span>
-          •
-          <span class="receipt">영수증</span>
-        </p>
+        <div class="description">
+          <p
+            class="block overflow-hidden textEllipsis text-gray-600 lineClamp-2 webkitBox webkitBoxVertical"
+          >
+            ${description}
+          </p>
+          <div class="hashTagArea mt3">
+            <span
+              class="hashTag rounded-sm bg-gray50 p2 text-gray-600"
+              >${hashTag[0]}</span
+            ><span
+              class="hashTag ml1 rounded-sm bg-gray50 p2 text-gray-600"
+              >${hashTag[1]}</span
+            >
+          </div>
+        </div>
+        <figure class="overflow-hidden roundedBase basis-20 h20 shrink0 posRelative">
+          <img class="posAbsolute left50 top50 translate50 minWidth40" src="${image}" alt="${alt}" />
+        </figure>
       </div>
     </a>
   </li>

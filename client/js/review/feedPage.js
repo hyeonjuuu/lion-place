@@ -1,9 +1,11 @@
 import {
   getNode as $,
-  getNodes,
   insertLast,
   delayP,
   tiger,
+  attr,
+  addClass,
+  removeClass,
 } from "/lib/index.js";
 
 const nav = $("nav");
@@ -18,102 +20,145 @@ function onHandleActive(e) {
 }
 nav.addEventListener("click", onHandleActive);
 
-const tabList = document.querySelectorAll(".topNavItem");
-const tabConts = document.querySelectorAll(".tabCont");
+// const words = [
+//   "spray",
+//   "limit",
+//   "elite",
+//   "exuberant",
+//   "destruction",
+//   "present",
+// ];
 
-for (let i = 0; i < tabList.length; i++) {
-  tabList[i].querySelector("a").addEventListener("click", function (e) {
-    e.preventDefault();
-    for (let j = 0; j < tabConts.length; j++) {
-      tabList[j]
-        .querySelector("a")
-        .classList.remove(
-          "is-active",
-          "border-b-2",
-          "border-lightblue/300",
-          "text-lightblue/300",
-        );
-      tabConts[j].style.display = "none";
-    }
-    this.classList.add(
-      "is-active",
-      "border-b-2",
-      "border-lightblue/300",
-      "text-lightblue/300",
-    );
-    tabConts[i].style.display = "block";
-  });
-}
+// const result = words.filter((word) => word.length > 6);
 
-const reviewList = $(".reviewList");
+// /* 요소 걸러내기 --------------------------- */
+
+// // filter : 배열을 반환
+// const filter = people.filter((item) => {
+//   return item.id > 2;
+// });
+
+// console.log(filter);
+
+// console.log(result);
+// // Expected output: Array ["exuberant", "destruction", "present"]
+
+const feedList = $(".feedList");
 
 async function renderUserList() {
   try {
     await delayP();
 
-    const response = await tiger.get("http://localhost:3000/allReview");
+    const response = await tiger.get("http://localhost:3000/feedPage");
     const userData = response.data;
     console.log(userData);
 
-    userData.forEach((item) => renderUserCard(reviewList, item));
+    userData.forEach((item) => renderUserCard(feedList, item));
   } catch (err) {
     console.log(err);
-    renderEmptyCard(reviewList);
+    renderEmptyCard(feedList);
     // location.href = '404.html'
   }
 }
 
 renderUserList();
 
+const tabMenu = $(".tabMenu");
+const tabMenuUl = $(".tabMenu ul");
+const list = [...tabMenuUl.children];
+
+async function filter(e) {
+  const response = await tiger.get("http://localhost:3000/feedPage");
+  const userData = response.data;
+  userData.forEach((item) => renderUserCard(feedList, item));
+  //let result = userData.filter((value) => value.dataFilter == filter);
+  //console.log(result);
+  const target = e.target.closest("li");
+  const anchor = e.target.closest("button");
+  const filter = attr(target, "data-filter");
+  const filterValue = userData.filter((value) => value.dataFilter);
+  console.log(filterValue);
+  let result = userData.filter(
+    (value) => value.dataFilter == anchor.textContent,
+  );
+
+  let objElem = userData[0];
+  let objKey = Object.keys(objElem)[0]; //key를구하고
+  let objValue = objElem[Object.keys(objElem)[0]];
+  console.log(objValue);
+
+  //console.log(result);
+
+  // for (const item of userData) {
+  //   if (userData.filterValue.includes(anchor.textContent)) {
+  //     item.style.display = "block";
+  //   } else {
+  //     item.style.display = "none";
+  //   }
+  // }
+
+  // clearContents(feedList);
+  // renderUserCard(feedList, result);
+
+  list.forEach((li) => {
+    removeClass(li, "bg-gray-500");
+    removeClass(li, "text-white");
+  });
+  addClass(target, "bg-gray-500");
+  addClass(target, "text-white");
+}
+
+tabMenu.addEventListener("click", filter);
+
 //생성 (생성하는 함수는 export할 필요 x)
 function createUserCard({
   userImage = "",
   userImageAlt = "",
   userId = "",
-  visitNum = "",
+  photoReviewNum = "",
   date = "",
   image = "",
   alt = "",
   description = "",
 }) {
   const template = `
-  <li class="reviewItem border-b border-gray/300 px-4 py-3">
-    <a href="#" class="flex gap-4">
-      <div>
-        <p
-          class="line-clamp-4 overflow-hidden text-ellipsis text-xs text-gray/500"
+  <li class="feedItem mt4">
+    <a href="#">
+      <div class="feedItemHeader flex justify-between items-center">
+        <div class="profileArea flex items-center gap-3">
+          <figure
+            class="h7 w-7 roundedFull bgBlack p-1 text-xs text-white posRelative overflow-hidden"
+          ><img class="posAbsolute top50 left50 translate50 posAbsolute" src="${userImage}" alt="${userImageAlt}" />
+          </figure>
+          <div class="flex flex-col">
+            <p class="title font-semibold">${userId}</p>
+            <div class="reviewInfo font-semibold text-gray/300">
+              <span class="photoReview"
+                >사진리뷰 <strong>${photoReviewNum}</strong></span
+              >•
+              <span class="date">${date}</span>
+            </div>
+          </div>
+        </div>
+        <button
+          class="h-7 w-10 rounded-2xl bgBlack px-2 py-1 text-xs font-semibold text-white"
         >
-          ${description}
-        </p>
+          팔로우
+        </button>
       </div>
-      <figure
-        class="flex-shrink-0 basis-20 h20 overflow-hidden rounded posRelative"
-      >
-        <img class="posAbsolute top50 left50 translate50 minWidth28"
+      <figure class="my2 overflow-hidden roundedXl h52 flex items-center">
+        <img
+          class="w-full"
           src="${image}"
           alt="${alt}"
         />
       </figure>
-    </a>
-    <a href="#" class="userInfo mt-2 flex items-center gap-2">
-      <figure
-        class="userImage h-7 w-7 flex-shrink-0 overflow-hidden rounded-full bg-lightblue/900"
-      >
-        <img src="${userImage}" alt="${userImageAlt}" />
-      </figure>
-      <div class="userProfile flex-shrink-0 font-semibold">
-        <p class="userId text-xs">${userId}</p>
-        <p class="visitInfo text-xs text-gray/300">
-          <span class="date">${date}</span> •
-          <span class="visitNum"><strong>${visitNum}</strong>번째 방문</span>
-          •
-          <span class="receipt">영수증</span>
-        </p>
-      </div>
+      <p class="summary text-xs font-semibold text-gray/300">
+        ${description}
+      </p>
     </a>
   </li>
   `;
-
   return template;
 }
 

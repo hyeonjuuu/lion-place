@@ -1,5 +1,17 @@
 import { getNode as $, insertLast, delayP, tiger } from "/lib/index.js";
 
+const nav = $("nav");
+const list = getNodes("nav ul li");
+
+function onHandleActive(e) {
+  let target = e.target.closest("li");
+
+  if (!target || !list) return;
+
+  target.classList.add("is-activeNav");
+}
+nav.addEventListener("click", onHandleActive);
+
 const reviewList = $(".reviewList");
 
 async function renderUserList() {
@@ -31,17 +43,19 @@ function createUserCard({
 }) {
   const template = `
   <li class="reviewItem mt4 overflow-hidden rounded2xl bg-white">
+  <li class="reviewItem mt4 overflow-hidden rounded2xl bg-white">
     <a href="/" class="flex">
       <figure>
         <img src="${image}" alt="${alt}" />
       </figure>
       <div
         class="flex flex-shrink-0 flex-grow flex-col justify-center p3 pr-3"
+        class="flex flex-shrink-0 flex-grow flex-col justify-center p3 pr-3"
       >
         <h3 class="flex justify-between space-x-2 font-semibold">
           ${store}<i class="inline-block"
             ><img
-              src="/assets/icons/call-gray.svg"
+              src="/assets/icons/call.svg"
               alt="전화기 아이콘"
           /></i>
         </h3>
