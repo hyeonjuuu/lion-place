@@ -10,7 +10,8 @@
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css"
     />
-    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <script src="/js/review/feedPage.js" type="module"></script>
   </head>
   <body class="font-pretendard">
     <div class="mx-auto min-w-[320px] max-w-[599px]">
@@ -43,10 +44,10 @@
         <!-- 공통내비 -->
         <h2 class="sr-only">메인 메뉴</h2>
         <ul class="flex justify-between">
-          <li class="self-end">
+          <li class="mr-[8px] self-end">
             <a
-              href="/"
-              class="mr-2 flex flex-col items-center justify-center px-3 py-2"
+              href="/pages/theme/map.html"
+              class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
                 src="/assets/icons/map.svg"
@@ -54,37 +55,40 @@
                 aria-hidden="true"
                 class="w-[22px]"
               />
-              <span class="text-xs">지도</span>
+              <span class="text-xs tracking-tighter">지도</span>
             </a>
           </li>
-          <li class="self-end">
-            <a href="/" class="mr-[10px] flex flex-col items-center px-3 py-2">
+          <li class="mr-[2px] self-end">
+            <a
+              href="/pages/theme/themeEnroll2.html"
+              class="flex flex-col items-center px-3 py-2"
+            >
               <img
                 src="/assets/icons/save.svg"
                 alt=""
                 aria-hidden="true"
-                class="w-[22px]"
+                class="mt-[2px] w-[22px]"
               />
-              <span class="mt-[2px] text-xs">저장</span>
+              <span class="mt-[3px] text-xs tracking-tighter">저장</span>
             </a>
           </li>
           <li class="self-end">
             <a
-              href="/"
+              href="/pages/theme/map.html"
               class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
                 src="/assets/icons/subway.svg"
                 alt=""
                 aria-hidden="true"
-                class="w-6"
+                class="mt-1 w-6"
               />
-              <span class="mt-[2px] text-xs">대중교통</span>
+              <span class="mt-[2px] text-xs tracking-tighter">대중교통</span>
             </a>
           </li>
           <li class="self-end">
             <a
-              href="/"
+              href="/pages/theme/map.html"
               class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
@@ -93,21 +97,21 @@
                 aria-hidden="true"
                 class="w-7"
               />
-              <span class="text-xs">내비게이션</span>
+              <span class="mt-[1px] text-xs tracking-tighter">내비게이션</span>
             </a>
           </li>
           <li class="self-end">
             <a
-              href="/"
+              href="/pages/theme/themepage.html"
               class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
                 src="/assets/icons/my.svg"
                 alt=""
                 aria-hidden="true"
-                class="w-6"
+                class="mt-[2px] w-6"
               />
-              <span class="mt-[1px] text-xs">MY</span>
+              <span class="mt-1 text-xs tracking-tighter">MY</span>
             </a>
           </li>
         </ul>
@@ -248,7 +252,7 @@
                   class="flex h-[30px] w-[17.1875rem] gap-[0.3125rem] self-center pt-2"
                 >
                   <button
-                    class="bg-lightBlue800 box-content flex h-[1.125rem] w-[4.6875rem] items-center justify-center rounded-md px-[3.5rem] py-1.5"
+                    class="box-content flex h-[1.125rem] w-[4.6875rem] items-center justify-center rounded-md bg-lightBlue800 px-[3.5rem] py-1.5"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -268,7 +272,7 @@
                     <span class="text-xs text-white">text</span>
                   </button>
                   <button
-                    class="bg-lightBlue800 box-content flex h-[1.125rem] w-[2.9375rem] items-center justify-center rounded-md px-[1.125rem] py-1.5"
+                    class="box-content flex h-[1.125rem] w-[2.9375rem] items-center justify-center rounded-md bg-lightBlue800 px-[1.125rem] py-1.5"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -368,9 +372,9 @@
           <div class="tabMenu overflow-hidden px-4 py-2">
             <ul class="flex w-full gap-2">
               <li
-                class="flex-shrink-0 flex-grow basis-20 rounded-2xl border border-gray-200 bg-gray-500 p-1 text-center"
+                class="flex-shrink-0 flex-grow basis-20 rounded-2xl border border-gray-200 bg-gray-500 p-1 text-center text-white"
               >
-                <button class="text-xs text-white">한식</button>
+                <button class="text-xs">한식</button>
               </li>
               <li
                 class="flex-shrink-0 flex-grow basis-20 rounded-2xl border border-gray-200 p-1 text-center"
@@ -399,48 +403,7 @@
               </li>
             </ul>
           </div>
-          <ul class="feedList px-4 py-2">
-            <li class="feedItem">
-              <a href="#">
-                <div class="feedItemHeader flex justify-between">
-                  <div class="profileArea flex items-center gap-3">
-                    <figure
-                      class="h-7 w-7 rounded-full bg-black p-1 text-xs text-white"
-                    >
-                      img<img src="" alt="" />
-                    </figure>
-                    <div class="flex flex-col">
-                      <p class="title font-semibold">멋쟁이사자처럼</p>
-                      <div class="reviewInfo font-semibold text-gray/300">
-                        <span class="photoReview"
-                          >사진리뷰 <strong>2</strong></span
-                        >•
-                        <span class="date">3.1.수</span>
-                      </div>
-                    </div>
-                  </div>
-                  <button
-                    class="h-7 w-10 rounded-2xl bg-black px-2 py-1 text-xs font-semibold text-white"
-                  >
-                    text
-                  </button>
-                </div>
-                <figure class="my-2 overflow-hidden rounded-xl">
-                  <img
-                    class="w-full"
-                    src="/assets/images/review/feedPage/ImagefieldFeed1.png"
-                    alt="음식사진"
-                  />
-                </figure>
-                <p class="summary text-xs font-semibold text-gray/300">
-                  주말엔 매일 줄 서 있어서 먹을 수가 없었는데 평일에 다행히 갈
-                  수 있어서 너무 좋았어요! 줄 안기다리고 먹었는데 와 너무
-                  맛있었습니다!! 괜히 또간집에서 나온 곳이 아니구나 했어요!!!
-                  저는 또 갈 것 같아요!!
-                </p>
-              </a>
-            </li>
-          </ul>
+          <ul class="feedList px-4 py-2"></ul>
         </div>
       </section>
     </div>

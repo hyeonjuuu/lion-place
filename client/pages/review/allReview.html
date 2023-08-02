@@ -10,9 +10,59 @@
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css"
     />
-    <link rel="stylesheet" href="../../css/main.css" />
+
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=25319638cf6e1239fa6f8c8fa0ce21df"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css" />
+    <script src="/js/map/reviewMap.js" type="module"></script>
+    <script src="/js/review/allReview.js" type="module"></script>
   </head>
+
   <body class="font-pretendard">
+    <!-- # -->
+    <header class="mx-auto min-w-[320px] max-w-[599px]">
+      <!-- 최상단 통신상태 및 시간표시 -->
+      <div
+        class="fixed top-0 z-50 flex w-full max-w-[599px] items-center bg-white px-[18px] py-2"
+      >
+        <time datetime="2023-07-28T03:15" class="font-semibold">3:15</time>
+        <div class="flex-grow">
+          <img
+            src="/assets/icons/position.svg"
+            alt=""
+            class="pl-1"
+            aria-hidden="true"
+          />
+        </div>
+
+        <img src="/assets/icons/battery.svg" alt="" aria-hidden="true" />
+        <span class="px-1 text-xs font-bold" aria-hidden="true">LTE</span>
+        <img src="/assets/icons/4g.svg" alt="" aria-hidden="true" />
+      </div>
+      <!-- 위치정보 표시 -->
+      <div
+        class="bar fixed top-10 z-50 flex w-full max-w-[599px] items-center bg-white px-[18px] py-2"
+      >
+        <button>
+          <img src="/assets/icons/left-black.svg" alt="뒤로가기 버튼" />
+        </button>
+        <p class="flex-grow">마포곱창타운 연남점</p>
+        <button class="ml-auto">
+          <img src="/assets/icons/close.svg" alt="닫기 버튼" />
+        </button>
+      </div>
+    </header>
+
+    <!-- # -->
     <div class="mx-auto min-w-[320px] max-w-[599px]">
       <!-- header -->
       <header>
@@ -34,19 +84,17 @@
           <img src="/assets/icons/4g.svg" alt="" aria-hidden="true" />
         </div>
       </header>
-      <!-- //header -->
 
-      <!-- common navigation -->
       <nav
         class="fixed bottom-0 z-50 w-full max-w-[599px] bg-white px-[17px] pb-[10px]"
       >
         <!-- 공통내비 -->
         <h2 class="sr-only">메인 메뉴</h2>
         <ul class="flex justify-between">
-          <li class="self-end">
+          <li class="mr-[8px] self-end">
             <a
-              href="/"
-              class="mr-2 flex flex-col items-center justify-center px-3 py-2"
+              href="/pages/theme/map.html"
+              class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
                 src="/assets/icons/map.svg"
@@ -54,37 +102,40 @@
                 aria-hidden="true"
                 class="w-[22px]"
               />
-              <span class="text-xs">지도</span>
+              <span class="text-xs tracking-tighter">지도</span>
             </a>
           </li>
-          <li class="self-end">
-            <a href="/" class="mr-[10px] flex flex-col items-center px-3 py-2">
+          <li class="mr-[2px] self-end">
+            <a
+              href="/pages/theme/themeEnroll2.html"
+              class="flex flex-col items-center px-3 py-2"
+            >
               <img
                 src="/assets/icons/save.svg"
                 alt=""
                 aria-hidden="true"
-                class="w-[22px]"
+                class="mt-[2px] w-[22px]"
               />
-              <span class="mt-[2px] text-xs">저장</span>
+              <span class="mt-[3px] text-xs tracking-tighter">저장</span>
             </a>
           </li>
           <li class="self-end">
             <a
-              href="/"
+              href="/pages/theme/map.html"
               class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
                 src="/assets/icons/subway.svg"
                 alt=""
                 aria-hidden="true"
-                class="w-6"
+                class="mt-1 w-6"
               />
-              <span class="mt-[2px] text-xs">대중교통</span>
+              <span class="mt-[2px] text-xs tracking-tighter">대중교통</span>
             </a>
           </li>
           <li class="self-end">
             <a
-              href="/"
+              href="/pages/theme/map.html"
               class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
@@ -93,135 +144,304 @@
                 aria-hidden="true"
                 class="w-7"
               />
-              <span class="text-xs">내비게이션</span>
+              <span class="mt-[1px] text-xs tracking-tighter">내비게이션</span>
             </a>
           </li>
           <li class="self-end">
             <a
-              href="/"
+              href="/pages/theme/themepage.html"
               class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
                 src="/assets/icons/my.svg"
                 alt=""
                 aria-hidden="true"
-                class="w-6"
+                class="mt-[2px] w-6"
               />
-              <span class="mt-[1px] text-xs">MY</span>
+              <span class="mt-1 text-xs tracking-tighter">MY</span>
             </a>
           </li>
         </ul>
       </nav>
-      <!-- //common navigation -->
 
-      <section class="bg-gray/100 pt-10">
-        <!-- topNav -->
-        <nav class="topNav bottom-0 left-0 w-full text-center bg-lightblue/900">
-          <ul class="topNavList flex justify-between">
-            <li class="topNavItem active flex-shrink-0 flex-grow p-2">
+      <!-- common navigation -->
+
+      <!-- !reviewMap -->
+      <div class="mx-auto min-w-[320px] max-w-[599px]">
+        <h1 class="sr-only">Lion Place</h1>
+        <header>
+          <!-- map -->
+          <div id="reviewMap" class="h-[350px]"></div>
+          <!-- 상세이미지 -->
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper inline-flex h-[150px] w-[150px]">
+              <img
+                src="/assets/images/map/review-map-image-2.png"
+                alt="상품이미지"
+                class="swiper-slide"
+              />
+              <img
+                src="/assets/images/map/review-map-image-1.png"
+                alt="상품이미지"
+                class="swiper-slide"
+              />
+              <img
+                src="/assets/images/review/allReview/img3.png"
+                alt="상품이미지"
+                class="swiper-slide"
+              />
+              <img
+                src="/assets/images/review/allReview/img4.png"
+                alt="상품이미지"
+                class="swiper-slide"
+              />
+              <img
+                src="/assets/images/review/allReview/visitor1.jpg"
+                alt="상품이미지"
+                class="swiper-slide"
+              />
+            </div>
+          </div>
+          <!-- 매장정보 -->
+          <section class="mt-4">
+            <h2 class="sr-only">매장 정보</h2>
+            <p class="text-center">
+              <span class="mr-2 text-center text-base font-semibold"
+                >마포곱창타운 연남점</span
+              ><span class="text-xs text-gray/300">곱창,막창,양</span>
+            </p>
+            <div class="flex items-center justify-center gap-2">
+              <div class="flex text-base font-semibold">
+                <img src="/assets/icons/heart.svg" alt="" />
+                <span>4.47</span><span class="text-gray/300">/5</span>
+              </div>
+              <p class="text-center text-xs text-primary">
+                방문자리뷰 2,229 &middot; 블로그리뷰 1,063
+              </p>
+            </div>
+            <p class="text-center text-xs font-semibold text-gray/600">
+              클레버티비 교육받는 사이 다녀온 마포홍대 곱창
+            </p>
+          </section>
+          <div>
+            <!-- 네비게이션 연결 버튼 -->
+            <div class="flex justify-center gap-2 p-2">
               <a
                 href="#"
-                class="block border-b-2 border-lightblue/300 p-1 text-base font-semibold text-lightblue/300"
+                class="flex items-center gap-1 rounded-3xl border border-solid border-primary bg-white px-[18px] py-[6px]"
+              >
+                <img
+                  src="/assets/icons/start-black.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <span class="text-xs">출발</span>
+              </a>
+              <a
+                href="#"
+                class="flex items-center gap-1 rounded-3xl bg-primary px-[18px] py-[6px] text-white"
+              >
+                <img
+                  src="/assets/icons/map-white.svg"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[18px] w-[18px]"
+                />
+                <span class="text-xs">도착</span>
+              </a>
+            </div>
+          </div>
+        </header>
+
+        <!-- #page 네비게이션 -->
+        <nav
+          class="fixed bottom-0 z-50 w-full max-w-[599px] bg-white px-[17px] pb-[10px]"
+        >
+          <!-- 공통내비 -->
+          <h2 class="sr-only">메인 메뉴</h2>
+          <ul class="flex justify-between">
+            <li class="mr-[8px] self-end">
+              <a
+                href="/pages/theme/map.html"
+                class="flex flex-col items-center justify-center px-3 py-2"
+              >
+                <img
+                  src="/assets/icons/map.svg"
+                  alt=""
+                  aria-hidden="true"
+                  class="w-[22px]"
+                />
+                <span class="text-xs tracking-tighter">지도</span>
+              </a>
+            </li>
+            <li class="mr-[2px] self-end">
+              <a
+                href="/pages/theme/themeEnroll2.html"
+                class="flex flex-col items-center px-3 py-2"
+              >
+                <img
+                  src="/assets/icons/save.svg"
+                  alt=""
+                  aria-hidden="true"
+                  class="mt-[2px] w-[22px]"
+                />
+                <span class="mt-[3px] text-xs tracking-tighter">저장</span>
+              </a>
+            </li>
+            <li class="self-end">
+              <a
+                href="/pages/theme/map.html"
+                class="flex flex-col items-center justify-center px-3 py-2"
+              >
+                <img
+                  src="/assets/icons/subway.svg"
+                  alt=""
+                  aria-hidden="true"
+                  class="mt-1 w-6"
+                />
+                <span class="mt-[2px] text-xs tracking-tighter">대중교통</span>
+              </a>
+            </li>
+            <li class="self-end">
+              <a
+                href="/pages/theme/map.html"
+                class="flex flex-col items-center justify-center px-3 py-2"
+              >
+                <img
+                  src="/assets/icons/car.svg"
+                  alt=""
+                  aria-hidden="true"
+                  class="w-7"
+                />
+                <span class="mt-[1px] text-xs tracking-tighter"
+                  >내비게이션</span
+                >
+              </a>
+            </li>
+            <li class="self-end">
+              <a
+                href="/pages/theme/themepage.html"
+                class="flex flex-col items-center justify-center px-3 py-2"
+              >
+                <img
+                  src="/assets/icons/my.svg"
+                  alt=""
+                  aria-hidden="true"
+                  class="mt-[2px] w-6"
+                />
+                <span class="mt-1 text-xs tracking-tighter">MY</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- section -->
+      <section class="mainContents bg-gray/100">
+        <!-- topNav -->
+        <nav class="topNav bottom-0 left-0 w-full bg-lightblue/900 text-center">
+          <ul class="topNavList flex justify-between">
+            <li class="topNavItem p-2">
+              <a
+                href="#"
+                class="is-active block border-b-2 border-lightblue/300 p-1 text-xs font-semibold text-gray/300 text-lightblue/300"
                 >홈</a
               >
             </li>
             <li class="topNavItem flex-shrink-0 flex-grow p-2">
-              <a
-                href="#"
-                class="block p-1 text-base font-semibold text-gray/300"
+              <a href="#" class="block p-1 text-xs font-semibold text-gray/300"
                 >소식</a
               >
             </li>
             <li class="topNavItem flex-shrink-0 flex-grow p-2">
-              <a
-                href="#"
-                class="block p-1 text-base font-semibold text-gray/300"
+              <a href="#" class="block p-1 text-xs font-semibold text-gray/300"
                 >메뉴</a
               >
             </li>
             <li class="topNavItem flex-shrink-0 flex-grow p-2">
-              <a
-                href="#"
-                class="block p-1 text-base font-semibold text-gray/300"
+              <a href="#" class="block p-1 text-xs font-semibold text-gray/300"
                 >리뷰</a
               >
             </li>
             <li class="topNavItem flex-shrink-0 flex-grow p-2">
-              <a
-                href="#"
-                class="block p-1 text-base font-semibold text-gray/300"
+              <a href="#" class="block p-1 text-xs font-semibold text-gray/300"
                 >사진</a
               >
             </li>
             <li class="topNavItem flex-shrink-0 flex-grow p-2">
-              <a
-                href="#"
-                class="block p-1 text-base font-semibold text-gray/300"
+              <a href="#" class="block p-1 text-xs font-semibold text-gray/300"
                 >지도</a
               >
             </li>
             <li class="topNavItem flex-shrink-0 flex-grow p-2">
-              <a
-                href="#"
-                class="block p-1 text-base font-semibold text-gray/300"
+              <a href="#" class="block p-1 text-xs font-semibold text-gray/300"
                 >주변</a
               >
             </li>
           </ul>
         </nav>
         <!-- //topNav -->
-        
-        <div class="noticeArea px-4 py-3">
-          <div class="notce flex justify-between">
-            <p class="font-semibold text-gray/300">
-              <strong class="text-black">이벤트, 혜택</strong> 알림을
-              받아보세요!
-            </p>
-            <button class="font-semibold">
-              <i class="inline-block align-middle"
-                ><img src="./../../assets/icons/ring.svg" alt="종 아이콘" /></i
-              >알림받기
-            </button>
-          </div>
 
-          <div class="mt-4 flex overflow-hidden rounded-2xl">
-            <figure class="flex-shrink-0 basis-24">
-              <img src="./../../assets/allReview/noticeImage.jpg" alt="" />
-            </figure>
-            <div class="flex flex-col justify-center gap-1 bg-white px-3">
-              <p class="title font-semibold">영수증리뷰 올리고 음료수 먹자!</p>
-              <p class="date text-gray/500">2023.02.02</p>
-              <p
-                class="date line-clamp-2 overflow-hidden text-ellipsis text-gray/300"
-              >
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book.
+        <div class="tabCont storeInfo bg-white">
+          <div class="noticeArea bg-gray/100 px-4 py-3">
+            <div class="notce flex justify-between">
+              <p class="text-xs font-semibold text-gray/300">
+                <strong class="text-black">이벤트, 혜택</strong> 알림을
+                받아보세요!
               </p>
+              <button class="text-xs font-semibold">
+                <i class="inline-block align-middle"
+                  ><img src="/assets/icons/ring.svg" alt="종 아이콘" /></i
+                >알림받기
+              </button>
+            </div>
+
+            <div class="mt-4 flex overflow-hidden rounded-2xl">
+              <figure class="flex-shrink-0 basis-24">
+                <img
+                  src="/assets/images/review/allReview/noticeImage.jpg"
+                  alt=""
+                />
+              </figure>
+              <div class="flex flex-col justify-center gap-1 bg-white px-3">
+                <p class="title text-xs font-semibold">
+                  영수증리뷰 올리고 음료수 먹자!
+                </p>
+                <p class="date text-xs text-gray/500">2023.02.02</p>
+                <p
+                  class="date line-clamp-2 overflow-hidden text-ellipsis text-xs text-gray/300"
+                >
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- //noticeArea -->
-
-        <div class="storeInfo bg-white">
+          <!-- //noticeArea -->
           <ul>
             <li class="location border-b border-gray/300 px-4 py-3">
               <div>
                 <i class="inline-block align-middle"
-                  ><img src="/assets/icons/location.svg" alt="위치 아이콘"
+                  ><img src="/assets/icons/location-gray.svg" alt="위치 아이콘"
                 /></i>
-                <span class="text-gray/500">서울 마포구 동교로 27길 20</span>
+                <span class="text-xs text-gray/500"
+                  >서울 마포구 동교로 27길 20</span
+                >
+                <span class="text-xs text-gray/500"
+                  >서울 마포구 동교로 27길 20</span
+                >
                 <button class="downBtn">
                   <img src="/assets/icons/down.svg" alt="" />
                 </button>
-                <button class="text-lightblue/300">
+                <button class="text-xs text-lightblue/300">
                   <i class="inline-block align-middle"
                     ><img src="/assets/icons/gps.svg" alt="gps 아이콘" /></i
                   >거리뷰
                 </button>
               </div>
-              <div class="text-gray/500">
+              <div class="mt-1 text-xs text-gray/500">
                 <span
                   class="subWayLineNum rounded-full bg-lightblue/100 p-1 text-white"
                   >2</span
@@ -234,12 +454,16 @@
                   class="subWayLineNum rounded-full bg-lightblue/100 p-1 text-white"
                   >경의중앙</span
                 >
-                <strong class="stationName text-black">홍대입구역</strong>
-                <span class="exitNum">2</span>번 출구에서
-                <span class="distance text-lightblue/300">314m</span>
+                <strong class="stationName text-xs text-black"
+                  >홍대입구역</strong
+                >
+                <span class="exitNum text-xs">2</span>번 출구에서
+                <span class="distance text-xs text-lightblue/300">314m</span>
               </div>
             </li>
-            <li class="info border-b border-gray/300 px-4 py-2 text-gray/500">
+            <li
+              class="info border-b border-gray/300 px-4 py-2 text-xs text-gray/500"
+            >
               <i class="inline-block align-middle"
                 ><img src="/assets/icons/time.svg" alt="시계 아이콘"
               /></i>
@@ -251,9 +475,11 @@
                 <img src="/assets/icons/down.svg" alt="" />
               </button>
             </li>
-            <li class="tel border-b border-gray/300 px-4 py-2 text-gray/500">
+            <li
+              class="tel border-b border-gray/300 px-4 py-2 text-xs text-gray/500"
+            >
               <i class="inline-block align-middle"
-                ><img src="/assets/icons/call.svg" alt="전화 아이콘"
+                ><img src="/assets/icons/call-gray.svg" alt="전화 아이콘"
               /></i>
               <span class="telNum text-black">02-336-4496</span>
               <button class="copybtn text-lightblue/300">
@@ -263,7 +489,7 @@
               </button>
             </li>
             <li
-              class="payInfo border-b border-gray/300 px-4 py-2 text-gray/500"
+              class="payInfo border-b border-gray/300 px-4 py-2 text-xs text-gray/500"
             >
               <i class="inline-block align-middle"
                 ><img src="/assets/icons/scan.svg" alt="스캔 아이콘"
@@ -271,7 +497,7 @@
               <span class="pay">제로페이</span>
             </li>
             <li
-              class="details border-b border-gray/300 px-4 py-2 text-gray/500"
+              class="details border-b border-gray/300 px-4 py-2 text-xs text-gray/500"
             >
               <i class="inline-block align-middle"
                 ><img src="/assets/icons/store.svg" alt="가게 아이콘"
@@ -279,7 +505,7 @@
               <span>단체석, 포장, 예약, 남/녀 화장실 구분</span>
             </li>
             <li
-              class="description relative flex items-start border-b border-gray/300 px-4 py-2 text-gray/500"
+              class="description relative flex items-start border-b border-gray/300 px-4 py-2 text-xs text-gray/500"
             >
               <i class="mt-1 inline-block w-3 flex-shrink-0 align-middle"
                 ><img src="/assets/icons/Group.svg" alt="메모 아이콘"
@@ -296,15 +522,15 @@
               </button>
             </li>
             <li
-              class="editPropose border-b border-gray/300 px-4 py-2 text-gray/500"
+              class="editPropose border-b border-gray/300 px-4 py-2 text-xs text-gray/500"
             >
               <i class="inline-block align-middle"
-                ><img src="/assets/icons/pencil.svg" alt="연필 아이콘"
+                ><img src="/assets/icons/pencil-black.svg" alt="연필 아이콘"
               /></i>
               <button>
                 정보수정 제안하기<i class="inline-block align-middle"
                   ><img
-                    src="/assets/icons/right.svg"
+                    src="/assets/icons/right-gray.svg"
                     alt="오른쪽 화살표 아이콘"
                 /></i>
               </button>
@@ -313,10 +539,47 @@
         </div>
         <!-- //storeInfo -->
 
+        <div class="tabCont noticeArea bg-gray/100 px-4 py-3">
+          <div class="notce flex justify-between">
+            <p class="text-xs font-semibold text-gray/300">
+              <strong class="text-black">이벤트, 혜택</strong> 알림을
+              받아보세요!
+            </p>
+            <button class="text-xs font-semibold">
+              <i class="inline-block align-middle"
+                ><img src="/assets/icons/ring.svg" alt="종 아이콘" /></i
+              >알림받기
+            </button>
+          </div>
+
+          <div class="mt-4 flex overflow-hidden rounded-2xl">
+            <figure class="flex-shrink-0 basis-24">
+              <img
+                src="/assets/images/review/allReview/noticeImage.jpg"
+                alt=""
+              />
+            </figure>
+            <div class="flex flex-col justify-center gap-1 bg-white px-3">
+              <p class="title text-xs font-semibold">
+                영수증리뷰 올리고 음료수 먹자!
+              </p>
+              <p class="date text-xs text-gray/500">2023.02.02</p>
+              <p
+                class="date line-clamp-2 overflow-hidden text-ellipsis text-xs text-gray/300"
+              >
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <!-- menu -->
-        <div class="menu mt-4 bg-white">
+        <div class="tabCont menu mt-4 bg-white">
           <div
-            class="titleArea flex justify-between border-y border-gray/300 px-4 py-3"
+            class="titleBar flex justify-between border-y border-gray/300 px-4 py-3"
           >
             <p class="title text-base font-semibold">
               메뉴 <strong class="menuNum text-lightblue/300">10</strong>
@@ -326,7 +589,11 @@
           <ul class="menuCardList flex flex-wrap px-4 py-3">
             <li class="menuCardItem mt-4 basis-2/4 pr-1">
               <figure class="border border-gray/300">
-                <img class="w-full" src="/assets/allReview/img1.png" alt="" />
+                <img
+                  class="w-full"
+                  src="/assets/images/review/allReview/img1.png"
+                  alt=""
+                />
               </figure>
               <div class="border border-gray/300 px-3 py-2">
                 <p
@@ -339,7 +606,11 @@
             </li>
             <li class="menuCardItem mt-4 basis-2/4 pl-1">
               <figure class="border border-gray/300">
-                <img class="w-full" src="/assets/allReview/img2.png" alt="" />
+                <img
+                  class="w-full"
+                  src="/assets/images/review/allReview/img2.png"
+                  alt=""
+                />
               </figure>
               <div class="border border-gray/300 px-3 py-2">
                 <p
@@ -352,11 +623,15 @@
             </li>
             <li class="menuCardItem mt-4 basis-2/4 pr-1">
               <figure class="border border-gray/300">
-                <img class="w-full" src="/assets/allReview/img3.png" alt="" />
+                <img
+                  class="w-full"
+                  src="/assets/images/review/allReview/img3.png"
+                  alt=""
+                />
               </figure>
               <div class="border border-gray/300 px-3 py-2">
                 <p
-                  class="menuTitle ffont-semibold overflow-hidden text-ellipsis text-xs"
+                  class="menuTitle ffont-semibold overflow-hidden text-ellipsis text-xs font-semibold"
                 >
                   황소곱창구이(한우곱창)
                 </p>
@@ -365,7 +640,11 @@
             </li>
             <li class="menuCardItem mt-4 basis-2/4 pl-1">
               <figure class="border border-gray/300">
-                <img class="w-full" src="/assets/allReview/img4.png" alt="" />
+                <img
+                  class="w-full"
+                  src="/assets/images/review/allReview/img4.png"
+                  alt=""
+                />
               </figure>
               <div class="border border-gray/300 px-3 py-2">
                 <p
@@ -389,129 +668,11 @@
         </div>
         <!-- //menu -->
 
-        <!-- visitorPhoto -->
-        <div class="visitorPhoto mt-4 bg-white">
-          <div class="titleArea px-4 py-3">
-            <p class="title text-base font-semibold">방문자 사진</p>
-          </div>
-          <ul class="photoList flex flex-wrap px-4 pb-3">
-            <li class="photoItem box-border basis-1/3 border border-white">
-              <a href="#">
-                <figure>
-                  <img
-                    class="w-full"
-                    src="/assets/allReview/visitor1.jpg"
-                    alt=""
-                  />
-                </figure>
-              </a>
-            </li>
-            <li class="photoItem box-border basis-1/3 border border-white">
-              <a href="#">
-                <figure>
-                  <img
-                    class="w-full"
-                    src="/assets/allReview/visitor2.jpg"
-                    alt=""
-                  />
-                </figure>
-              </a>
-            </li>
-            <li class="photoItem box-border basis-1/3 border border-white">
-              <a href="#">
-                <figure>
-                  <img
-                    class="w-full"
-                    src="/assets/allReview/visitor3.jpg"
-                    alt=""
-                  />
-                </figure>
-              </a>
-            </li>
-            <li class="photoItem box-border basis-1/3 border border-white">
-              <a href="#">
-                <figure>
-                  <img
-                    class="w-full"
-                    src="/assets/allReview/visitor3.jpg"
-                    alt=""
-                  />
-                </figure>
-              </a>
-            </li>
-            <li class="photoItem box-border basis-1/3 border border-white">
-              <a href="#">
-                <figure>
-                  <img
-                    class="w-full"
-                    src="/assets/allReview/visitor2.jpg"
-                    alt=""
-                  />
-                </figure>
-              </a>
-            </li>
-            <li class="photoItem box-border basis-1/3 border border-white">
-              <a href="#">
-                <figure>
-                  <img
-                    class="w-full"
-                    src="/assets/allReview/visitor1.jpg"
-                    alt=""
-                  />
-                </figure>
-              </a>
-            </li>
-            <li class="photoItem box-border basis-1/3 border border-white">
-              <a href="#">
-                <figure>
-                  <img
-                    class="w-full"
-                    src="/assets/allReview/visitor1.jpg"
-                    alt=""
-                  />
-                </figure>
-              </a>
-            </li>
-            <li class="photoItem box-border basis-1/3 border border-white">
-              <a href="#">
-                <figure>
-                  <img
-                    class="w-full"
-                    src="/assets/allReview/visitor2.jpg"
-                    alt=""
-                  />
-                </figure>
-              </a>
-            </li>
-            <li class="photoItem box-border basis-1/3 border border-white">
-              <a href="#">
-                <figure>
-                  <img
-                    class="w-full"
-                    src="/assets/allReview/visitor3.jpg"
-                    alt=""
-                  />
-                </figure>
-              </a>
-            </li>
-          </ul>
-          <button
-            class="moreBtn w-full bg-gray-50 py-3 font-semibold text-gray/500"
-          >
-            방문자 사진 더보기<i class="inline-block align-middle"
-              ><img
-                src="/assets/icons/arrowRight.svg"
-                alt="오른쪽 화살표 아이콘"
-            /></i>
-          </button>
-        </div>
-        <!-- //visitorPhoto -->
-
         <!-- reviewWrap -->
-        <div class="reviewWrap">
+        <div class="tabCont reviewWrap">
           <!-- visitorReview -->
           <div class="visitorReview mt-4 bg-white px-4 py-3">
-            <div class="titleArea flex justify-between">
+            <div class="titleBar flex justify-between">
               <p class="title text-base font-semibold">
                 방문자 리뷰
                 <strong class="reveiwNum text-lightblue/300">2,315</strong>
@@ -581,115 +742,7 @@
           <!-- //reviewWrap -->
 
           <div class="reviewListArea">
-            <ul class="reviewList mt-4 bg-white">
-              <li class="reviewItem border-b border-gray/300 px-4 py-3">
-                <a href="#" class="flex gap-4">
-                  <div>
-                    <p
-                      class="line-clamp-4 overflow-hidden text-ellipsis text-gray/500 text-xs"
-                    >
-                      마포 최고의 곱창집 👍👍 소곱창과 돼지 양념곱창을 함께 먹을
-                      수 있는 소주 무한대로 부르는 집 😍😍 소곱창 언제나
-                      맛있구요~ 기름칠 된 부추에 마늘간장소스에 찍어먹으면 너무
-                      맛있어요
-                    </p>
-                  </div>
-                  <figure
-                    class="flex-shrink-0 basis-20 overflow-hidden rounded"
-                  >
-                    <img src="/assets/allReview/ImagefieldFeed1.png" alt="" />
-                  </figure>
-                </a>
-                <a href="#" class="userInfo mt-2 flex items-center gap-2">
-                  <figure
-                    class="userImage h-7 w-7 flex-shrink-0 overflow-hidden rounded-full bg-lightblue/900"
-                  >
-                    <img src="" alt="" />
-                  </figure>
-                  <div class="userProfile flex-shrink-0 font-semibold">
-                    <p class="userId text-base">COOLION</p>
-                    <p class="visitInfo text-xs text-gray/300">
-                      <span class="date">3.10.금</span> •
-                      <span class="visitNum"><strong>2</strong>번째 방문</span>
-                      •
-                      <span class="receipt">영수증</span>
-                    </p>
-                  </div>
-                </a>
-              </li>
-
-              <li class="reviewItem border-b border-gray/300 px-4 py-3">
-                <a href="#" class="flex gap-4">
-                  <div>
-                    <p
-                      class="line-clamp-4 overflow-hidden text-ellipsis text-gray/500 text-xs"
-                    >
-                      마포 최고의 곱창집 👍👍 소곱창과 돼지 양념곱창을 함께 먹을
-                      수 있는 소주 무한대로 부르는 집 😍😍 소곱창 언제나
-                      맛있구요~ 기름칠 된 부추에 마늘간장소스에 찍어먹으면 너무
-                      맛있어요
-                    </p>
-                  </div>
-                  <figure
-                    class="flex-shrink-0 basis-20 overflow-hidden rounded"
-                  >
-                    <img src="/assets/allReview/ImagefieldFeed2.png" alt="" />
-                  </figure>
-                </a>
-                <a href="#" class="userInfo mt-2 flex items-center gap-2">
-                  <figure
-                    class="userImage h-7 w-7 flex-shrink-0 overflow-hidden rounded-full bg-lightblue/900"
-                  >
-                    <img src="" alt="" />
-                  </figure>
-                  <div class="userProfile flex-shrink-0 font-semibold">
-                    <p class="userId text-base">또또또간집</p>
-                    <p class="visitInfo text-xs text-gray/300">
-                      <span class="date">3.10.금</span> •
-                      <span class="visitNum"><strong>2</strong>번째 방문</span>
-                      •
-                      <span class="receipt">영수증</span>
-                    </p>
-                  </div>
-                </a>
-              </li>
-
-              <li class="reviewItem border-b border-gray/300 px-4 py-3">
-                <a href="#" class="flex gap-4">
-                  <div>
-                    <p
-                      class="line-clamp-4 overflow-hidden text-ellipsis text-gray/500 text-xs"
-                    >
-                      마포 최고의 곱창집 👍👍 소곱창과 돼지 양념곱창을 함께 먹을
-                      수 있는 소주 무한대로 부르는 집 😍😍 소곱창 언제나
-                      맛있구요~ 기름칠 된 부추에 마늘간장소스에 찍어먹으면 너무
-                      맛있어요
-                    </p>
-                  </div>
-                  <figure
-                    class="flex-shrink-0 basis-20 overflow-hidden rounded"
-                  >
-                    <img src="/assets/allReview/ImagefieldFeed3.png" alt="" />
-                  </figure>
-                </a>
-                <a href="#" class="userInfo mt-2 flex items-center gap-2">
-                  <figure
-                    class="userImage h-7 w-7 flex-shrink-0 overflow-hidden rounded-full bg-lightblue/900"
-                  >
-                    <img src="" alt="" />
-                  </figure>
-                  <div class="userProfile flex-shrink-0 font-semibold">
-                    <p class="userId text-base">곱창더쿠***</p>
-                    <p class="visitInfo text-xs text-gray/300">
-                      <span class="date">3.10.금</span> •
-                      <span class="visitNum"><strong>2</strong>번째 방문</span>
-                      •
-                      <span class="receipt">영수증</span>
-                    </p>
-                  </div>
-                </a>
-              </li>
-            </ul>
+            <ul class="reviewList mt-4 bg-white"></ul>
             <button
               class="moreBtn w-full bg-gray-50 py-3 font-semibold text-gray/500"
             >
@@ -704,7 +757,7 @@
 
           <!-- themeListArea -->
           <div class="themeListArea mt-4 bg-white px-4 py-3">
-            <div class="titleArea flex items-center justify-between">
+            <div class="titleBar flex items-center justify-between">
               <p class="title font-semibold">
                 이 장소가 포함된 테마리스트
                 <strong class="themeNum font-semibold text-lightblue/300"
@@ -718,12 +771,18 @@
             <div class="themeCard mt-4 rounded-lg bg-lightblue/200 px-3 py-4">
               <a href="#" class="userInfo mt-2 flex items-center gap-2">
                 <figure
-                  class="userImage h-7 w-7 flex-shrink-0 overflow-hidden rounded-full w-10 h-10 border border-white border-4"
+                  class="userImage h-10 h-7 w-10 w-7 flex-shrink-0 overflow-hidden rounded-full border border-4 border-white"
                 >
-                  <img class="block w-full h-full bg-lightblue/900" src="" alt="" />
+                  <img
+                    class="block h-full w-full bg-lightblue/900"
+                    src=""
+                    alt=""
+                  />
                 </figure>
                 <div class="userProfile flex-shrink-0 font-semibold">
-                  <p class="userId text-base text-white font-semibold">맛있는걸 찾아다니는</p>
+                  <p class="userId text-base font-semibold text-white">
+                    맛있는걸 찾아다니는
+                  </p>
                   <p class="visitInfo text-xs text-gray/300 text-white">
                     <span class="date">3.10.금</span> •
                     <span class="visitNum"><strong>2</strong>번째 방문</span>
@@ -732,26 +791,32 @@
                   </p>
                 </div>
               </a>
-              <ul class="themeList flex justify-between my-2">
+              <ul class="themeList my-2 flex justify-between">
                 <li class="themeItem active">
                   <a href="#">
                     <figure>
-                      <img src="/assets/allReview/Imagetheme1.png" alt="" />
-                      <figcaption class="text-xs text-white text-center mt-1">
+                      <img
+                        src="/assets/images/review/allReview/Imagetheme1.png"
+                        alt=""
+                      />
+                      <figcaption class="mt-1 text-center text-xs text-white">
                         <i class="inline-block align-middle"
                           ><img
                             src="/assets/icons/location-white.svg"
                             alt="" /></i
                         >마포곱창타운
+                      </figcaption>
                     </figure>
-                    </figcaption>
                   </a>
                 </li>
                 <li class="themeItem">
                   <a href="#">
                     <figure>
-                      <img src="/assets/allReview/Imagetheme2.png" alt="" />
-                      <figcaption class="text-xs text-white text-center mt-1">
+                      <img
+                        src="/assets/images/review/allReview/Imagetheme2.png"
+                        alt=""
+                      />
+                      <figcaption class="mt-1 text-center text-xs text-white">
                         <i class="inline-block align-middle"
                           ><img
                             src="/assets/icons/location-white.svg"
@@ -764,8 +829,11 @@
                 <li class="themeItem">
                   <a href="#">
                     <figure>
-                      <img src="/assets/allReview/Imagetheme3.png" alt="" />
-                      <figcaption class="text-xs text-white text-center mt-1">
+                      <img
+                        src="/assets/images/review/allReview/Imagetheme3.png"
+                        alt=""
+                      />
+                      <figcaption class="mt-1 text-center text-xs text-white">
                         <i class="inline-block align-middle"
                           ><img
                             src="/assets/icons/location-white.svg"
@@ -776,53 +844,74 @@
                   </a>
                 </li>
               </ul>
-              <p class="reviewMessage rounded-lg px-3 py-2 bg-lightblue/400 text-white text-xs font-semibold">맛있고 친절해요! 야곱 굿굿!!</p>
+              <p
+                class="reviewMessage rounded-lg bg-lightblue/400 px-3 py-2 text-xs font-semibold text-white"
+              >
+                맛있고 친절해요! 야곱 굿굿!!
+              </p>
             </div>
           </div>
-           <!-- //themeListArea -->
+          <!-- //themeListArea -->
 
-            <!-- blogReview -->
-            <div class="mt-4 bg-white">
-              <div class="titleArea border-y border-gray/300 px-4 py-3">
-                <p class="title font-semibold">블로그리뷰<strong class="blogNum text-lightblue/300">1,073</strong></p>
-              </div>
-              <ul class="blogReviewList bg-white">
-                <li class="blogReviewItem border-b border-gray/300 px-4 py-3">
-                  <a href="#" class="userInfo mt-2 flex flex-shrink-0 flex-grow items-center gap-2">
-                    <figure
-                      class="userImage h-7 w-7 flex-shrink-0 overflow-hidden rounded-full bg-lightblue/900"
+          <!-- blogReview -->
+          <div class="mt-4 bg-white">
+            <div class="titleArea border-y border-gray/300 px-4 py-3">
+              <p class="title font-semibold">
+                블로그리뷰<strong class="blogNum text-lightblue/300"
+                  >1,073</strong
+                >
+              </p>
+            </div>
+            <ul class="blogReviewList bg-white">
+              <li class="blogReviewItem border-b border-gray/300 px-4 py-3">
+                <a
+                  href="#"
+                  class="userInfo mt-2 flex flex-shrink-0 flex-grow items-center gap-2"
+                >
+                  <figure
+                    class="userImage h-7 w-7 flex-shrink-0 overflow-hidden rounded-full bg-lightblue/900"
+                  >
+                    <img src="" alt="" />
+                  </figure>
+                  <div
+                    class="userProfile flex items-center gap-1 text-xs font-semibold"
+                  >
+                    <p class="userId">쩡군</p>
+                    <p class="blogInfo flex text-gray/300">
+                      <span class="blogTitle">Allez~!</span> •
+                      <span class="postDate">3.8.수</span>
+                    </p>
+                  </div>
+                </a>
+                <a href="#" class="mt-2 flex gap-4">
+                  <div class="text-xs">
+                    <p
+                      class="title line-clamp-2 overflow-hidden text-ellipsis font-semibold"
                     >
-                      <img src="" alt="" />
-                    </figure>
-                    <div class="userProfile font-semibold flex items-center text-xs gap-1">
-                      <p class="userId">쩡군</p>
-                      <p class="blogInfo text-gray/300 flex">
-                        <span class="blogTitle">Allez~!</span> •
-                        <span class="postDate">3.8.수</span>
-                      </p>
-                    </div>
-                  </a>
-                  <a href="#" class="flex gap-4 mt-2">
-                    <div class="text-xs">
-                      <p class="title line-clamp-2 overflow-hidden text-ellipsis font-semibold">오래간만에 즐긴 소곱창,”그저 최고였어요.” 홍대 연남동 맛집진짜 추천합니다.</p>
-                      <p
-                        class="line-clamp-4 overflow-hidden text-ellipsis text-gray/500 "
-                      >
-                        마포 최고의 곱창집 👍👍 소곱창과 돼지 양념곱창을 함께 먹을
-                        수 있는 소주 무한대로 부르는 집 😍😍 소곱창 언제나
-                        맛있구요~ 기름칠 된 부추에 마늘간장소스에 찍어먹으면 너무
-                        맛있어요
-                      </p>
-                    </div>
-                    <figure
-                      class="flex-shrink-0 basis-20 overflow-hidden rounded"
+                      오래간만에 즐긴 소곱창,”그저 최고였어요.” 홍대 연남동
+                      맛집진짜 추천합니다.
+                    </p>
+                    <p
+                      class="line-clamp-4 overflow-hidden text-ellipsis text-gray/500"
                     >
-                      <img src="/assets/allReview/ImagefieldFeed1.png" alt="" />
-                    </figure>
-                  </a>
-                </li>
-              </ul>
-              <button
+                      마포 최고의 곱창집 👍👍 소곱창과 돼지 양념곱창을 함께 먹을
+                      수 있는 소주 무한대로 부르는 집 😍😍 소곱창 언제나
+                      맛있구요~ 기름칠 된 부추에 마늘간장소스에 찍어먹으면 너무
+                      맛있어요
+                    </p>
+                  </div>
+                  <figure
+                    class="flex-shrink-0 basis-20 overflow-hidden rounded"
+                  >
+                    <img
+                      src="/assets/images/review/allReview/ImagefieldFeed1.png"
+                      alt=""
+                    />
+                  </figure>
+                </a>
+              </li>
+            </ul>
+            <button
               class="moreBtn w-full bg-gray-50 py-3 font-semibold text-gray/500"
             >
               블로그 리뷰 더보기<i class="inline-block align-middle"
@@ -831,73 +920,299 @@
                   alt="오른쪽 화살표 아이콘"
               /></i>
             </button>
-            </div>
-            <!-- //blogReview -->
-
-            <div class="mapArea mt-4 bg-white px-4 py-3">
-              <div class="titleArea">
-                <p class="title font-semibold text-base">지도</p>
-              </div>
-              <figure class="mt-3 rounded-xl overflow-hidden"><img src="/assets/allReview/map.png" alt="지도 이미지" /></figure>
-              <!-- mapInfo -->
-              <div class="mapInfo px-4 py-3">
-                <div>
-                  <i class="inline-block align-middle"
-                    ><img src="/assets/icons/location.svg" alt="위치 아이콘"
-                  /></i>
-                  <span class="text-gray/500">서울 마포구 동교로 27길 20</span>
-                  <button class="downBtn">
-                    <img src="/assets/icons/down.svg" alt="" />
-                  </button>
-                  <button class="text-lightblue/300">
-                    <i class="inline-block align-middle"
-                      ><img src="/assets/icons/gps.svg" alt="gps 아이콘" /></i
-                    >거리뷰
-                  </button>
-                </div>
-                <div class="text-gray/500">
-                  <span
-                    class="subWayLineNum rounded-full bg-lightblue/100 p-1 text-white"
-                    >2</span
-                  >
-                  <span
-                    class="subWayLineNum rounded-full bg-lightblue/100 p-1 text-white"
-                    >공항</span
-                  >
-                  <span
-                    class="subWayLineNum rounded-full bg-lightblue/100 p-1 text-white"
-                    >경의중앙</span
-                  >
-                  <strong class="stationName text-black">홍대입구역</strong>
-                  <span class="exitNum">2</span>번 출구에서
-                  <span class="distance text-lightblue/300">314m</span>
-                </div>
-              </div>
-              <!-- //mapInfo -->
-              <div class="btnGroup py-3 flex justify-center text-xs">
-                <button class="border-t border-l border-b border-gray/300 py-2 px-5 w-28">
-                  <i class="inline-block align-middle"><img src="/assets/icons/Subway-lightblue300.svg" alt="지하철 아이콘" /></i>대중교통
-                </button>
-                <button class="border-l border-t border-b border-gray/300 py-2 px-5 w-28">
-                  <i class="inline-block align-middle"><img src="/assets/icons/car-lightblue300.svg" alt="자동차 아이콘" /></i>자동차
-                </button>
-                <button class="border-l border-t border-r border-b border-gray/300 py-2 px-5 w-28">
-                  <i class="inline-block align-middle"><img src="/assets/icons/my-lightblue300.svg" alt="사람 아이콘" /></i>도보
-                </button>
-              </div>
-            </div>
-            <!-- //mapArea -->
+          </div>
+          <!-- //blogReview -->
         </div>
         <!-- //reviewWrap -->
+
+        <!-- visitorPhoto -->
+        <div class="tabCont visitorPhoto mt-4 bg-white">
+          <div class="titleArea px-4 py-3">
+            <p class="title text-base font-semibold">방문자 사진</p>
+          </div>
+          <ul class="photoList flex flex-wrap px-4 pb-3">
+            <li class="photoItem box-border basis-1/3 border border-white">
+              <a href="#">
+                <figure>
+                  <img
+                    class="w-full"
+                    src="/assets/images/review/allReview/visitor1.jpg"
+                    alt=""
+                  />
+                </figure>
+              </a>
+            </li>
+            <li class="photoItem box-border basis-1/3 border border-white">
+              <a href="#">
+                <figure>
+                  <img
+                    class="w-full"
+                    src="/assets/images/review/allReview/visitor2.jpg"
+                    alt=""
+                  />
+                </figure>
+              </a>
+            </li>
+            <li class="photoItem box-border basis-1/3 border border-white">
+              <a href="#">
+                <figure>
+                  <img
+                    class="w-full"
+                    src="/assets/images/review/allReview/visitor3.jpg"
+                    alt=""
+                  />
+                </figure>
+              </a>
+            </li>
+            <li class="photoItem box-border basis-1/3 border border-white">
+              <a href="#">
+                <figure>
+                  <img
+                    class="w-full"
+                    src="/assets/images/review/allReview/visitor3.jpg"
+                    alt=""
+                  />
+                </figure>
+              </a>
+            </li>
+            <li class="photoItem box-border basis-1/3 border border-white">
+              <a href="#">
+                <figure>
+                  <img
+                    class="w-full"
+                    src="/assets/images/review/allReview/visitor2.jpg"
+                    alt=""
+                  />
+                </figure>
+              </a>
+            </li>
+            <li class="photoItem box-border basis-1/3 border border-white">
+              <a href="#">
+                <figure>
+                  <img
+                    class="w-full"
+                    src="/assets/images/review/allReview/visitor1.jpg"
+                    alt=""
+                  />
+                </figure>
+              </a>
+            </li>
+            <li class="photoItem box-border basis-1/3 border border-white">
+              <a href="#">
+                <figure>
+                  <img
+                    class="w-full"
+                    src="/assets/images/review/allReview/visitor1.jpg"
+                    alt=""
+                  />
+                </figure>
+              </a>
+            </li>
+            <li class="photoItem box-border basis-1/3 border border-white">
+              <a href="#">
+                <figure>
+                  <img
+                    class="w-full"
+                    src="/assets/images/review/allReview/visitor2.jpg"
+                    alt=""
+                  />
+                </figure>
+              </a>
+            </li>
+            <li class="photoItem box-border basis-1/3 border border-white">
+              <a href="#">
+                <figure>
+                  <img
+                    class="w-full"
+                    src="/assets/images/review/allReview/visitor3.jpg"
+                    alt=""
+                  />
+                </figure>
+              </a>
+            </li>
+          </ul>
+          <button
+            class="moreBtn w-full bg-gray-50 py-3 font-semibold text-gray/500"
+          >
+            방문자 사진 더보기<i class="inline-block align-middle"
+              ><img
+                src="/assets/icons/arrowRight.svg"
+                alt="오른쪽 화살표 아이콘"
+            /></i>
+          </button>
+        </div>
+        <!-- //visitorPhoto -->
+
+        <div class="tabCont mapArea mt-4 bg-white px-4 py-3">
+          <div class="titleArea">
+            <p class="title text-base font-semibold">지도</p>
+          </div>
+          <figure class="mt-3 overflow-hidden rounded-xl">
+            <img
+              src="/assets/images/review/allReview/map.png"
+              alt="지도 이미지"
+            />
+          </figure>
+          <!-- mapInfo -->
+          <div class="mapInfo px-4 py-3 text-xs">
+            <div>
+              <i class="inline-block align-middle"
+                ><img src="/assets/icons/location-gray.svg" alt="위치 아이콘"
+              /></i>
+              <span class="text-gray/500">서울 마포구 동교로 27길 20</span>
+              <button class="downBtn">
+                <img src="/assets/icons/down.svg" alt="" />
+              </button>
+              <button class="text-lightblue/300">
+                <i class="inline-block align-middle"
+                  ><img src="/assets/icons/gps.svg" alt="gps 아이콘" /></i
+                >거리뷰
+              </button>
+            </div>
+            <div class="mt-1 text-gray/500">
+              <span
+                class="subWayLineNum rounded-full bg-lightblue/100 p-1 text-white"
+                >2</span
+              >
+              <span
+                class="subWayLineNum rounded-full bg-lightblue/100 p-1 text-white"
+                >공항</span
+              >
+              <span
+                class="subWayLineNum rounded-full bg-lightblue/100 p-1 text-white"
+                >경의중앙</span
+              >
+              <strong class="stationName text-black">홍대입구역</strong>
+              <span class="exitNum">2</span>번 출구에서
+              <span class="distance text-lightblue/300">314m</span>
+            </div>
+          </div>
+          <!-- //mapInfo -->
+          <div class="btnGroup flex justify-center py-3 text-xs">
+            <button
+              class="w-28 border-b border-l border-t border-gray/300 px-5 py-2"
+            >
+              <i class="inline-block align-middle"
+                ><img
+                  src="/assets/icons/Subway-lightblue300.svg"
+                  alt="지하철 아이콘" /></i
+              >대중교통
+            </button>
+            <button
+              class="w-28 border-b border-l border-t border-gray/300 px-5 py-2"
+            >
+              <i class="inline-block align-middle"
+                ><img
+                  src="/assets/icons/car-lightblue300.svg"
+                  alt="자동차 아이콘" /></i
+              >자동차
+            </button>
+            <button
+              class="w-28 border-b border-l border-r border-t border-gray/300 px-5 py-2"
+            >
+              <i class="inline-block align-middle"
+                ><img
+                  src="/assets/icons/my-lightblue300.svg"
+                  alt="사람 아이콘" /></i
+              >도보
+            </button>
+          </div>
+        </div>
+        <!-- //mapArea -->
+
+        <div class="tabCont aroundArea mt-4 bg-white px-4 py-3">
+          <div class="titleArea">
+            <p class="title text-base font-semibold">주변</p>
+          </div>
+          <figure class="mt-3 overflow-hidden rounded-xl">
+            <img
+              src="/assets/images/review/allReview/map.png"
+              alt="지도 이미지"
+            />
+          </figure>
+          <!-- mapInfo -->
+          <div class="mapInfo px-4 py-3 text-xs">
+            <div>
+              <i class="inline-block align-middle"
+                ><img src="/assets/icons/location-gray.svg" alt="위치 아이콘"
+              /></i>
+              <span class="text-gray/500">서울 마포구 동교로 27길 20</span>
+              <button class="downBtn">
+                <img src="/assets/icons/down.svg" alt="" />
+              </button>
+              <button class="text-lightblue/300">
+                <i class="inline-block align-middle"
+                  ><img src="/assets/icons/gps.svg" alt="gps 아이콘" /></i
+                >거리뷰
+              </button>
+            </div>
+            <div class="mt-1 text-gray/500">
+              <span
+                class="subWayLineNum rounded-full bg-lightblue/100 p-1 text-white"
+                >2</span
+              >
+              <span
+                class="subWayLineNum rounded-full bg-lightblue/100 p-1 text-white"
+                >공항</span
+              >
+              <span
+                class="subWayLineNum rounded-full bg-lightblue/100 p-1 text-white"
+                >경의중앙</span
+              >
+              <strong class="stationName text-black">홍대입구역</strong>
+              <span class="exitNum">2</span>번 출구에서
+              <span class="distance text-lightblue/300">314m</span>
+            </div>
+          </div>
+          <!-- //mapInfo -->
+          <div class="btnGroup flex justify-center py-3 text-xs">
+            <button
+              class="w-28 border-b border-l border-t border-gray/300 px-5 py-2"
+            >
+              <i class="inline-block align-middle"
+                ><img
+                  src="/assets/icons/Subway-lightblue300.svg"
+                  alt="지하철 아이콘" /></i
+              >대중교통
+            </button>
+            <button
+              class="w-28 border-b border-l border-t border-gray/300 px-5 py-2"
+            >
+              <i class="inline-block align-middle"
+                ><img
+                  src="/assets/icons/car-lightblue300.svg"
+                  alt="자동차 아이콘" /></i
+              >자동차
+            </button>
+            <button
+              class="w-28 border-b border-l border-r border-t border-gray/300 px-5 py-2"
+            >
+              <i class="inline-block align-middle"
+                ><img
+                  src="/assets/icons/my-lightblue300.svg"
+                  alt="사람 아이콘" /></i
+              >도보
+            </button>
+          </div>
+        </div>
+        <!-- //aroundArea -->
       </section>
+      <footer class="h-32 bg-gray/100 py-4">
+        <ul class="flex items-center justify-center">
+          <li class="text-xs font-semibold text-gray/500">
+            <a href="#">이용약관</a>&nbsp;|&nbsp;
+          </li>
+          <li class="text-xs font-semibold text-gray/500">
+            <a href="#">고객센터</a>&nbsp;|&nbsp;
+          </li>
+          <li class="text-xs font-semibold text-gray/500">
+            <a href="#">리뷰운영정책</a>&nbsp;|&nbsp;
+          </li>
+          <li class="text-xs font-semibold text-gray/500">
+            <a href="#">신소센터</a>
+          </li>
+        </ul>
+      </footer>
     </div>
-    <footer class="bg-gray/100 py-4">
-      <ul class="flex justify-center">
-        <li><a href="#">이용약관</a></li>&nbsp;|&nbsp;
-        <li><a href="#">고객센터</a></li>&nbsp;|&nbsp;
-        <li><a href="#">리뷰운영정책</a></li>&nbsp;|&nbsp;
-        <li><a href="#">신소센터</a></li> 
-      </ul>
-    </footer>
   </body>
 </html>

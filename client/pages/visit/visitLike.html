@@ -18,9 +18,10 @@
     <link rel="stylesheet" href="/css/main.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script src="/js/main.js" type="module"></script>
+    <script src="/js/visit/swiper.js" type="module"></script>
 
     <script src="/js/swiper.js" type="module"></script>
+    <script src="/js/review/visitReview.js" type="module"></script>
 
     <title>project</title>
   </head>
@@ -59,7 +60,8 @@
           <a href="/">
             <img
               class="absolute right-[0.875rem] top-[0.875rem]"
-              src="./../../assets/icons/swiper/close.svg"
+              src="/assets/icons/swiper/close.svg"
+              src="/assets/icons/swiper/close.svg"
               alt="닫기 버튼"
             />
           </a>
@@ -103,279 +105,298 @@
           <div class="swiper">
             <div class="swiper-wrapper pb-[32px]">
               <!-- ^line1 -->
-              <div class="swiper-slide relative mt-1 block">
+              <div class="swiper-slide mt-1 flex flex-col">
                 <!-- keyword1 -->
-                <button
-                  type="button"
-                  class="mb-2 flex content-center items-center rounded-[4px] bg-primary px-5 py-2.5 drop-shadow-lg"
-                >
-                  <span>💚</span>
-                  <span
-                    class="ml-1 mr-1 whitespace-nowrap text-sm font-normal text-white"
-                    >원하는 스타일로 잘해줘요</span
+
+                <div class="mx-auto inline-block">
+                  <button
+                    type="button"
+                    class="mb-2 flex content-center items-center rounded-[4px] bg-gray/50 px-5 py-2.5 drop-shadow-lg"
                   >
-                </button>
-                <!-- keyword2 -->
-                <button
-                  type="button"
-                  class="mb-2 flex content-center items-center rounded-[4px] bg-primary px-5 py-2.5 drop-shadow-lg"
-                >
-                  <span>💇‍♀️</span>
-                  <span
-                    class="ml-1 whitespace-nowrap text-sm font-normal text-white"
-                    >스타일 추천을 잘해줘요</span
-                  >
-                </button>
-                <!-- keyword3 -->
-                <button
-                  type="button"
-                  class="mb-2 flex content-center items-center rounded-[4px] bg-primary px-5 py-2.5 drop-shadow-lg"
-                >
-                  <span>🌹</span>
-                  <span
-                    class="ml-1 whitespace-nowrap text-sm font-normal text-white"
-                    >고급스러워요</span
-                  >
-                </button>
-                <!-- keyword4 -->
-                <button
-                  type="button"
-                  class="mb-2 flex content-center items-center rounded-[4px] bg-primary px-5 py-2.5 drop-shadow-lg"
-                >
-                  <span>😎</span>
-                  <span
-                    class="ml-1 whitespace-nowrap text-sm font-normal text-white"
-                    >트렌디해요</span
-                  >
-                </button>
-                <!-- &down arrow -->
-                <div class="flex justify-center">
-                  <button type="button">
-                    <img
-                      src="/assets/icons/swiper/circleDown.svg"
-                      alt="아래 화살표 버튼"
-                    />
+                    <span>💚</span>
+                    <span
+                      class="ml-1 whitespace-nowrap text-sm font-normal text-gray/500"
+                      >원하는 스타일로 잘해줘요</span
+                    >
                   </button>
+                  <!-- keyword2 -->
+                  <button
+                    type="button"
+                    class="mb-2 flex content-center items-center rounded-[4px] bg-gray/50 px-5 py-2.5 drop-shadow-lg"
+                  >
+                    <span>💇‍♀️</span>
+                    <span
+                      class="ml-1 whitespace-nowrap text-sm font-normal text-gray/500"
+                      >스타일 추천을 잘해줘요</span
+                    >
+                  </button>
+
+                  <!-- keyword3 -->
+                  <button
+                    type="button"
+                    class="mb-2 flex content-center items-center rounded-[4px] bg-gray/50 px-5 py-2.5 drop-shadow-lg"
+                  >
+                    <span>🌹</span>
+                    <span
+                      class="ml-1 whitespace-nowrap text-sm font-normal text-gray/500"
+                      >고급스러워요</span
+                    >
+                  </button>
+                  <!-- keyword4 -->
+                  <button
+                    type="button"
+                    class="mb-2 flex content-center items-center rounded-[4px] bg-gray/50 px-5 py-2.5 drop-shadow-lg"
+                  >
+                    <span>😎</span>
+                    <span
+                      class="ml-1 whitespace-nowrap text-sm font-normal text-gray/500"
+                      >트렌디해요</span
+                    >
+                  </button>
+                  <div class="flex justify-center">
+                    <button type="button" class="arrow">
+                      <img
+                        src="/assets/icons/swiper/circleDown.svg"
+                        alt="아래 화살표 버튼"
+                      />
+                    </button>
+                  </div>
                 </div>
+                <!-- &down arrow -->
               </div>
 
               <!-- ^line2 -->
-              <div class="swiper-slide relative mt-1 block flex-col">
-                <!-- keyword1 -->
-                <button
-                  type="button"
-                  class="mb-2 flex content-center items-center rounded-[4px] bg-primary px-5 py-2.5 drop-shadow-lg"
-                >
-                  <span>💆‍♀️</span>
-                  <span
-                    class="ml-1 whitespace-nowrap text-sm font-normal text-white"
-                    >관리법을 잘 알려줘요</span
+              <div class="swiper-slide mt-1 flex flex-col">
+                <div class="mx-auto inline-block">
+                  <!-- keyword1 -->
+                  <button
+                    type="button"
+                    class="mb-2 flex content-center items-center rounded-[4px] bg-gray/50 px-5 py-2.5 drop-shadow-lg"
                   >
-                </button>
-                <!-- keyword2 -->
-                <button
-                  type="button"
-                  class="mb-2 flex content-center items-center rounded-[4px] bg-primary px-5 py-2.5 drop-shadow-lg"
-                >
-                  <span>🤲</span>
-                  <span
-                    class="ml-1 whitespace-nowrap text-sm font-normal text-white"
-                    >손이 빨라요</span
-                  >
-                </button>
-                <!-- keyword3 -->
-                <button
-                  type="button"
-                  class="mb-2 flex content-center items-center rounded-[4px] bg-primary px-5 py-2.5 drop-shadow-lg"
-                >
-                  <span>😃</span>
-                  <span
-                    class="ml-1 whitespace-nowrap text-sm font-normal text-white"
-                    >친절해요</span
-                  >
-                </button>
-                <!-- keyword4 -->
-                <button
-                  type="button"
-                  class="mb-2 flex content-center items-center rounded-[4px] bg-primary px-5 py-2.5 drop-shadow-lg"
-                >
-                  <span>💚</span>
-                  <span
-                    class="ml-1 mr-1 whitespace-nowrap text-sm font-normal text-white"
-                    >원하는 스타일로 잘해줘요</span
-                  >
-                </button>
-                <!-- down arrow -->
-                <div class="flex justify-center">
-                  <button type="button">
-                    <img
-                      src="/assets/icons/swiper/circleDown.svg"
-                      alt="아래 화살표 버튼"
-                    />
+                    <span>💆‍♀️</span>
+                    <span
+                      class="ml-1 whitespace-nowrap text-sm font-normal text-gray/500"
+                      >관리법을 잘 알려줘요</span
+                    >
                   </button>
+                  <!-- keyword2 -->
+                  <button
+                    type="button"
+                    class="mb-2 flex content-center items-center rounded-[4px] bg-gray/50 px-5 py-2.5 drop-shadow-lg"
+                  >
+                    <span>🤲</span>
+                    <span
+                      class="ml-1 whitespace-nowrap text-sm font-normal text-gray/500"
+                      >손이 빨라요</span
+                    >
+                  </button>
+                  <!-- keyword3 -->
+                  <button
+                    type="button"
+                    class="mb-2 flex content-center items-center rounded-[4px] bg-gray/50 px-5 py-2.5 drop-shadow-lg"
+                  >
+                    <span>😃</span>
+                    <span
+                      class="ml-1 whitespace-nowrap text-sm font-normal text-gray/500"
+                      >친절해요</span
+                    >
+                  </button>
+                  <!-- keyword4 -->
+                  <button
+                    type="button"
+                    class="mb-2 flex content-center items-center rounded-[4px] bg-gray/50 px-5 py-2.5 drop-shadow-lg"
+                  >
+                    <span>💚</span>
+                    <span
+                      class="ml-1 mr-1 whitespace-nowrap text-sm font-normal text-gray/500"
+                      >원하는 스타일로 잘해줘요</span
+                    >
+                  </button>
+                  <!-- down arrow -->
+                  <div class="flex justify-center">
+                    <button type="button " class="arrow">
+                      <img
+                        src="/assets/icons/swiper/circleDown.svg"
+                        alt="아래 화살표 버튼"
+                      />
+                    </button>
+                  </div>
                 </div>
               </div>
 
               <!-- ^line3 -->
-              <div class="swiper-slide relative mt-1 block flex-col">
-                <!-- keyword1 -->
-                <button
-                  type="button"
-                  class="mb-2 flex content-center items-center rounded-[4px] bg-primary px-5 py-2.5 drop-shadow-lg"
-                >
-                  <span>🔍</span>
-                  <span
-                    class="ml-1 whitespace-nowrap text-sm font-normal text-white"
-                    >시술이 꼼꼼해요</span
+              <div class="swiper-slide mt-1 flex flex-col">
+                <div class="mx-auto inline-block">
+                  <!-- keyword1 -->
+                  <button
+                    type="button"
+                    class="mb-2 flex content-center items-center rounded-[4px] bg-gray/50 px-5 py-2.5 drop-shadow-lg"
                   >
-                </button>
-                <!-- keyword2 -->
-                <button
-                  type="button"
-                  class="mb-2 flex content-center items-center rounded-[4px] bg-primary px-5 py-2.5 drop-shadow-lg"
-                >
-                  <span>🤲</span>
-                  <span
-                    class="ml-1 whitespace-nowrap text-sm font-normal text-white"
-                    >손이 빨라요</span
-                  >
-                </button>
-                <!-- keyword3 -->
-                <button
-                  type="button"
-                  class="mb-2 flex content-center items-center rounded-[4px] bg-primary px-5 py-2.5 drop-shadow-lg"
-                >
-                  <span>💆‍♀️</span>
-                  <span
-                    class="ml-1 whitespace-nowrap text-sm font-normal text-white"
-                    >관리법을 잘 알려줘요</span
-                  >
-                </button>
-                <!-- keyword4 -->
-                <button
-                  type="button"
-                  class="mb-2 flex content-center items-center rounded-[4px] bg-primary px-5 py-2.5 drop-shadow-lg"
-                >
-                  <span>📋</span>
-                  <span
-                    class="ml-1 whitespace-nowrap text-sm font-normal text-white"
-                    >상담이 자세해요</span
-                  >
-                </button>
-
-                <!-- down arrow -->
-                <div class="flex justify-center">
-                  <button type="button">
-                    <img
-                      src="/assets/icons/swiper/circleDown.svg"
-                      alt="아래 화살표 버튼"
-                    />
+                    <span>🔍</span>
+                    <span
+                      class="ml-1 whitespace-nowrap text-sm font-normal text-gray/500"
+                      >시술이 꼼꼼해요</span
+                    >
                   </button>
+                  <!-- keyword2 -->
+                  <button
+                    type="button"
+                    class="mb-2 flex content-center items-center rounded-[4px] bg-gray/50 px-5 py-2.5 drop-shadow-lg"
+                  >
+                    <span>🤲</span>
+                    <span
+                      class="ml-1 whitespace-nowrap text-sm font-normal text-gray/500"
+                      >손이 빨라요</span
+                    >
+                  </button>
+                  <!-- keyword3 -->
+                  <button
+                    type="button"
+                    class="mb-2 flex content-center items-center rounded-[4px] bg-gray/50 px-5 py-2.5 drop-shadow-lg"
+                  >
+                    <span>💆‍♀️</span>
+                    <span
+                      class="ml-1 whitespace-nowrap text-sm font-normal text-gray/500"
+                      >관리법을 잘 알려줘요</span
+                    >
+                  </button>
+                  <!-- keyword4 -->
+                  <button
+                    type="button"
+                    class="mb-2 flex content-center items-center rounded-[4px] bg-gray/50 px-5 py-2.5 drop-shadow-lg"
+                  >
+                    <span>📋</span>
+                    <span
+                      class="ml-1 whitespace-nowrap text-sm font-normal text-gray/500"
+                      >상담이 자세해요</span
+                    >
+                  </button>
+                  <!-- down arrow -->
+                  <div class="flex justify-center">
+                    <button type="button" class="arrow">
+                      <img
+                        src="/assets/icons/swiper/circleDown.svg"
+                        alt="아래 화살표 버튼"
+                      />
+                    </button>
+                  </div>
                 </div>
               </div>
 
               <!-- ^line4 -->
-              <div
-                class="swiper-slide relative mt-1 block h-[224px] w-[162px] flex-col"
-              >
-                <!-- keyword1 -->
-                <button
-                  type="button"
-                  class="mb-2 flex content-center items-center rounded-[4px] bg-primary px-5 py-2.5 drop-shadow-lg"
-                >
-                  <span>💲</span>
-                  <span
-                    class="ml-1 whitespace-nowrap text-sm font-normal text-white"
-                    >가격이 합리적이에요</span
+              <div class="swiper-slide mt-1 flex flex-col">
+                <div class="mx-auto inline-block">
+                  <!-- keyword1 -->
+                  <button
+                    type="button"
+                    class="mb-2 flex content-center items-center rounded-[4px] bg-gray/50 px-5 py-2.5 drop-shadow-lg"
                   >
-                </button>
-                <!-- keyword2 -->
-                <button
-                  type="button"
-                  class="mb-2 flex content-center items-center rounded-[4px] bg-primary px-5 py-2.5 drop-shadow-lg"
-                >
-                  <span>💎</span>
-                  <span
-                    class="ml-1 whitespace-nowrap text-sm font-normal text-white"
-                    >비싼 만큼 가치가 있어요</span
-                  >
-                </button>
-                <!-- keyword3 -->
-                <button
-                  type="button"
-                  class="mb-2 flex content-center items-center rounded-[4px] bg-primary px-5 py-2.5 drop-shadow-lg"
-                >
-                  <span>🧴</span>
-                  <span
-                    class="ml-1 whitespace-nowrap text-sm font-normal text-white"
-                    >좋은 제품을 사용해요</span
-                  >
-                </button>
-                <!-- keyword4 -->
-                <button
-                  type="button"
-                  class="mb-2 flex content-center items-center rounded-[4px] bg-primary px-5 py-2.5 drop-shadow-lg"
-                >
-                  <span>🚗</span>
-                  <span
-                    class="ml-1 whitespace-nowrap text-sm font-normal text-white"
-                    >주차하기 편해요</span
-                  >
-                </button>
-
-                <!-- down arrow -->
-                <div class="flex justify-center">
-                  <button type="button">
-                    <img
-                      src="/assets/icons/swiper/circleDown.svg"
-                      alt="아래 화살표 버튼"
-                    />
+                    <span>💲</span>
+                    <span
+                      class="ml-1 whitespace-nowrap text-sm font-normal text-gray/500"
+                      >가격이 합리적이에요</span
+                    >
                   </button>
+                  <!-- keyword2 -->
+                  <button
+                    type="button"
+                    class="mb-2 flex content-center items-center rounded-[4px] bg-gray/50 px-5 py-2.5 drop-shadow-lg"
+                  >
+                    <span>💎</span>
+                    <span
+                      class="ml-1 whitespace-nowrap text-sm font-normal text-gray/500"
+                      >비싼 만큼 가치가 있어요</span
+                    >
+                  </button>
+                  <!-- keyword3 -->
+                  <button
+                    type="button"
+                    class="mb-2 flex content-center items-center rounded-[4px] bg-gray/50 px-5 py-2.5 drop-shadow-lg"
+                  >
+                    <span>🧴</span>
+                    <span
+                      class="ml-1 whitespace-nowrap text-sm font-normal text-gray/500"
+                      >좋은 제품을 사용해요</span
+                    >
+                  </button>
+                  <!-- keyword4 -->
+                  <button
+                    type="button"
+                    class="mb-2 flex content-center items-center rounded-[4px] bg-gray/50 px-5 py-2.5 drop-shadow-lg"
+                  >
+                    <span>🚗</span>
+                    <span
+                      class="ml-1 whitespace-nowrap text-sm font-normal text-gray/500"
+                      >주차하기 편해요</span
+                    >
+                  </button>
+                  <!-- down arrow -->
+                  <div class="flex justify-center">
+                    <button type="button" class="arrow">
+                      <img
+                        src="/assets/icons/swiper/circleDown.svg"
+                        alt="아래 화살표 버튼"
+                      />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <!-- #리뷰를 남겨주세요 -->
-        <div class="mb-[22px] mt-[34px]">
-          <div
-            class="mb-[22px] mt-[34px] flex flex-col items-center gap-4 px-4"
-          >
-            <h3 class="text-lg font-bold text-black">리뷰를 남겨주세요</h3>
-            <button
-              type="button"
-              class="flex w-full max-w-[320px] justify-center gap-1 rounded-[4px] border-[1px] border-black bg-white p-3 text-xs font-semibold leading-normal"
+        <div class="reviewArea">
+          <div class="mb-[22px] mt-[34px]">
+            <div
+              class="mb-[22px] mt-[34px] flex flex-col items-center gap-4 px-4"
             >
-              <img src="/assets/icons/swiper/photo.svg" alt="카메라 아이콘" />
-              사진추가
-              <span class="text-gray/300">최대 20장</span>
-            </button>
-          </div>
-          <!-- 리뷰 작성란 -->
-          <div class="px-4">
-            <div class="mb-4 flex flex-col bg-gray/50 px-3 py-6">
-              <dl class="text-xs leading-normal">
-                <dt class="text-gray/300">리뷰 작성하기</dt>
-                <dd class="text-gray/500">
-                  진짜 맨날 근처오면 와서 4-5개씩은 사가는 곳입니다. 비건디저트
-                  특유의 향이 안나서 더 좋아요!
-                </dd>
-              </dl>
-              <span class="self-end text-xs text-black"
-                >0<span class="text-gray/500">/400</span></span
-              >
-            </div>
-            <!-- 등록 버튼 -->
-            <div class="flex items-center justify-between gap-4">
-              <a href="/" class="text-xs font-normal leading-normal underline"
-                >리뷰 작성 유의사항</a
-              >
-              <button
+              <h3 class="text-lg font-bold text-black">리뷰를 남겨주세요</h3>
+              <!-- <button
                 type="button"
-                class="box-content rounded-[4px] bg-primary px-[28px] py-3"
+                class="flex w-full max-w-[320px] justify-center gap-1 rounded-[4px] border-[1px] border-black bg-white p-3 text-xs font-semibold leading-normal"
               >
-                <span class="text-sm font-normal text-white">등록하기</span>
-              </button>
+                <img src="/assets/icons/swiper/photo.svg" alt="카메라 아이콘" />
+                사진추가
+                <span class="text-gray/300">최대 20장</span>
+              </button> -->
+            </div>
+
+            <div class="px-4">
+              <div class="mb-4 flex flex-col bg-gray/50 px-3 py-6">
+                <dl class="text-xs leading-normal">
+                  <p class="font-semibold text-black">리뷰 작성하기</p>
+                  <form class="text-gray/500">
+                    <label for="reviewText"></label>
+                    <input
+                      type="text"
+                      class="mt-1 block w-full bg-transparent"
+                      id="storeName"
+                      placeholder="가게이름을 입력하세요."
+                    />
+                    <input
+                      type="text"
+                      class="mt-1 block w-full bg-transparent"
+                      id="reviewText"
+                      placeholder="리뷰를 입력하세요."
+                    />
+                  </form>
+                </dl>
+                <span class="self-end text-xs text-black"
+                  >0<span class="text-gray/500">/400</span></span
+                >
+              </div>
+              <div class="flex items-center justify-between gap-4">
+                <a href="/" class="text-xs font-normal leading-normal underline"
+                  >리뷰 작성 유의사항</a
+                >
+                <button
+                  type="submit"
+                  class="send box-content rounded-[4px] bg-primary px-[28px] py-3"
+                  data-name="send"
+                >
+                  <span class="text-sm font-normal text-white">등록하기</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -388,10 +409,10 @@
         <!-- 공통내비 -->
         <h2 class="sr-only">메인 메뉴</h2>
         <ul class="flex justify-between">
-          <li class="self-end">
+          <li class="mr-[8px] self-end">
             <a
-              href="/"
-              class="mr-[8px] flex flex-col items-center justify-center px-3 py-2"
+              href="/pages/theme/map.html"
+              class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
                 src="/assets/icons/map.svg"
@@ -402,34 +423,37 @@
               <span class="text-xs tracking-tighter">지도</span>
             </a>
           </li>
-          <li class="self-end">
-            <a href="/" class="mr-[2px] flex flex-col items-center px-3 py-2">
+          <li class="mr-[2px] self-end">
+            <a
+              href="/pages/theme/themeEnroll2.html"
+              class="flex flex-col items-center px-3 py-2"
+            >
               <img
                 src="/assets/icons/save.svg"
                 alt=""
                 aria-hidden="true"
-                class="w-[22px]"
+                class="mt-[2px] w-[22px]"
               />
-              <span class="mt-[2px] text-xs tracking-tighter">저장</span>
+              <span class="mt-[3px] text-xs tracking-tighter">저장</span>
             </a>
           </li>
           <li class="self-end">
             <a
-              href="/"
+              href="/pages/theme/map.html"
               class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
                 src="/assets/icons/subway.svg"
                 alt=""
                 aria-hidden="true"
-                class="w-6"
+                class="mt-1 w-6"
               />
               <span class="mt-[2px] text-xs tracking-tighter">대중교통</span>
             </a>
           </li>
           <li class="self-end">
             <a
-              href="/"
+              href="/pages/theme/map.html"
               class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
@@ -438,21 +462,21 @@
                 aria-hidden="true"
                 class="w-7"
               />
-              <span class="text-xs tracking-tighter">내비게이션</span>
+              <span class="mt-[1px] text-xs tracking-tighter">내비게이션</span>
             </a>
           </li>
           <li class="self-end">
             <a
-              href="/"
+              href="/pages/theme/themepage.html"
               class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
                 src="/assets/icons/my.svg"
                 alt=""
                 aria-hidden="true"
-                class="w-6"
+                class="mt-[2px] w-6"
               />
-              <span class="mt-[1px] text-xs tracking-tighter">MY</span>
+              <span class="mt-1 text-xs tracking-tighter">MY</span>
             </a>
           </li>
         </ul>

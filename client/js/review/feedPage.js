@@ -1,4 +1,12 @@
-import { getNode as $, insertLast, delayP, tiger } from "/lib/index.js";
+import {
+  getNode as $,
+  insertLast,
+  delayP,
+  tiger,
+  attr,
+  addClass,
+  removeClass,
+} from "/lib/index.js";
 
 const nav = $("nav");
 const list = getNodes("nav ul li");
@@ -12,60 +20,145 @@ function onHandleActive(e) {
 }
 nav.addEventListener("click", onHandleActive);
 
-const reviewList = $(".reviewList");
+// const words = [
+//   "spray",
+//   "limit",
+//   "elite",
+//   "exuberant",
+//   "destruction",
+//   "present",
+// ];
+
+// const result = words.filter((word) => word.length > 6);
+
+// /* 요소 걸러내기 --------------------------- */
+
+// // filter : 배열을 반환
+// const filter = people.filter((item) => {
+//   return item.id > 2;
+// });
+
+// console.log(filter);
+
+// console.log(result);
+// // Expected output: Array ["exuberant", "destruction", "present"]
+
+const feedList = $(".feedList");
 
 async function renderUserList() {
   try {
     await delayP();
 
-    const response = await tiger.get("http://localhost:3000/reviewChoice");
+    const response = await tiger.get("http://localhost:3000/feedPage");
     const userData = response.data;
     console.log(userData);
 
-    userData.forEach((item) => renderUserCard(reviewList, item));
+    userData.forEach((item) => renderUserCard(feedList, item));
   } catch (err) {
     console.log(err);
-    renderEmptyCard(reviewList);
+    renderEmptyCard(feedList);
     // location.href = '404.html'
   }
 }
 
 renderUserList();
 
+const tabMenu = $(".tabMenu");
+const tabMenuUl = $(".tabMenu ul");
+const list = [...tabMenuUl.children];
+
+async function filter(e) {
+  const response = await tiger.get("http://localhost:3000/feedPage");
+  const userData = response.data;
+  userData.forEach((item) => renderUserCard(feedList, item));
+  //let result = userData.filter((value) => value.dataFilter == filter);
+  //console.log(result);
+  const target = e.target.closest("li");
+  const anchor = e.target.closest("button");
+  const filter = attr(target, "data-filter");
+  const filterValue = userData.filter((value) => value.dataFilter);
+  console.log(filterValue);
+  let result = userData.filter(
+    (value) => value.dataFilter == anchor.textContent,
+  );
+
+  let objElem = userData[0];
+  let objKey = Object.keys(objElem)[0]; //key를구하고
+  let objValue = objElem[Object.keys(objElem)[0]];
+  console.log(objValue);
+
+  //console.log(result);
+
+  // for (const item of userData) {
+  //   if (userData.filterValue.includes(anchor.textContent)) {
+  //     item.style.display = "block";
+  //   } else {
+  //     item.style.display = "none";
+  //   }
+  // }
+
+  // clearContents(feedList);
+  // renderUserCard(feedList, result);
+
+  list.forEach((li) => {
+    removeClass(li, "bg-gray-500");
+    removeClass(li, "text-white");
+  });
+  addClass(target, "bg-gray-500");
+  addClass(target, "text-white");
+}
+
+tabMenu.addEventListener("click", filter);
+
 //생성 (생성하는 함수는 export할 필요 x)
 function createUserCard({
+  userImage = "",
+  userImageAlt = "",
+  userId = "",
+  photoReviewNum = "",
+  date = "",
   image = "",
   alt = "",
-  store = "",
   description = "",
-  location = "",
-  visitDate = "",
 }) {
   const template = `
-  <li class="reviewItem mt4 overflow-hidden rounded2xl bg-white">
-  <li class="reviewItem mt4 overflow-hidden rounded2xl bg-white">
-    <a href="/" class="flex">
-      <figure>
-        <img src="${image}" alt="${alt}" />
-      </figure>
-      <div
-        class="flex flex-shrink-0 flex-grow flex-col justify-center p3 pr-3"
-        class="flex flex-shrink-0 flex-grow flex-col justify-center p3 pr-3"
-      >
-        <h3 class="flex justify-between space-x-2 font-semibold">
-          ${store}<i class="inline-block"
-            ><img
-              src="/assets/icons/call.svg"
-              alt="전화기 아이콘"
-          /></i>
-        </h3>
-        <p>${description}</p>
-        <p><span>${location}</span> | <span>${visitDate} </span>방문</p>
+  <li class="feedItem mt4">
+    <a href="#">
+      <div class="feedItemHeader flex justify-between items-center">
+        <div class="profileArea flex items-center gap-3">
+          <figure
+            class="h7 w-7 roundedFull bgBlack p-1 text-xs text-white posRelative overflow-hidden"
+          ><img class="posAbsolute top50 left50 translate50 posAbsolute" src="${userImage}" alt="${userImageAlt}" />
+          </figure>
+          <div class="flex flex-col">
+            <p class="title font-semibold">${userId}</p>
+            <div class="reviewInfo font-semibold text-gray/300">
+              <span class="photoReview"
+                >사진리뷰 <strong>${photoReviewNum}</strong></span
+              >•
+              <span class="date">${date}</span>
+            </div>
+          </div>
+        </div>
+        <button
+          class="h-7 w-10 rounded-2xl bgBlack px-2 py-1 text-xs font-semibold text-white"
+        >
+          팔로우
+        </button>
       </div>
+      <figure class="my2 overflow-hidden roundedXl h52 flex items-center">
+        <img
+          class="w-full"
+          src="${image}"
+          alt="${alt}"
+        />
+      </figure>
+      <p class="summary text-xs font-semibold text-gray/300">
+        ${description}
+      </p>
     </a>
   </li>
   `;
-
   return template;
 }
 
@@ -123,4 +216,14 @@ function renderUserCard(target, data) {
 
 function renderEmptyCard(target) {
   insertLast(target, createEmptyCard());
+}
+
+function clearContents(node) {
+  if (typeof node === "string") node = getNode(node);
+  if (node.nodeName === "INPUT" || node.nodeName === "TEXTAREA") {
+    node.value = "";
+    return;
+  }
+
+  node.textContent = "";
 }

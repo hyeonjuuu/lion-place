@@ -11,6 +11,7 @@
     />
     <link rel="stylesheet" href="/css/main.css" />
     <script src="/js/main.js" type="module"></script>
+    <script src="/js/review/visitReview.js" type="module"></script>
     <title>project</title>
   </head>
   <body class="font-pretendard">
@@ -89,10 +90,7 @@
               <!-- #계정 이름 -->
               <div class="flex">
                 <h3 class="w-[81px] font-bold text-white">COOLION</h3>
-                <img
-                  src="./../../assets/icons/swiper/share.svg"
-                  alt="쉐어 아이콘"
-                />
+                <img src="/assets/icons/swiper/share.svg" alt="쉐어 아이콘" />
               </div>
               <!-- #리스트 영역 -->
               <!-- 리뷰 -->
@@ -139,13 +137,13 @@
             class="flex h-[30px] w-[17.1875rem] gap-[0.3125rem] self-center pt-2"
           >
             <button
-              class="box-content flex h-[1.125rem] w-[4.6875rem] items-center justify-center rounded-md bg-lightBlue800 px-[3.5rem] py-1.5"
+              class="bg-lightBlue800 box-content flex h-[1.125rem] w-[4.6875rem] items-center justify-center rounded-md px-[3.5rem] py-1.5"
             >
               <img src="/assets/icons/swiper/pencil2.svg" alt="연필 아이콘" />
               <span class="text-xs text-white">text</span>
             </button>
             <button
-              class="box-content flex h-[1.125rem] w-[2.9375rem] items-center justify-center rounded-md bg-lightBlue800 px-[1.125rem] py-1.5"
+              class="bg-lightBlue800 box-content flex h-[1.125rem] w-[2.9375rem] items-center justify-center rounded-md px-[1.125rem] py-1.5"
             >
               <img src="/assets/icons/swiper/mission.svg" alt="인증 아이콘" />
               <span class="text-xs text-white">text</span>
@@ -153,6 +151,8 @@
           </div>
         </div>
       </section>
+      <!-- #nav -->
+
       <!-- #nav -->
       <nav
         class="mx-auto box-content flex h-10 min-w-[320px] max-w-[599px] justify-around bg-primary pt-2"
@@ -164,11 +164,14 @@
           class="relative box-content w-[4.375rem] font-bold text-lightblue/300"
         >
           방문
-          <span
+          <div
             class="absolute bottom-0 box-content h-0.5 w-[4.375rem] min-w-full bg-lightblue/300"
-          ></span>
+          ></div>
         </button>
-        <button class="box-content w-[4.375rem] font-bold text-gray/300">
+        <button
+          onclick="location.href='/pages/theme/themepage.html'"
+          class="relative box-content w-[4.375rem] font-bold text-gray/300"
+        >
           리뷰
         </button>
         <button
@@ -181,11 +184,11 @@
       <!-- !main -->
       <main>
         <ul
-          class="min-h-[692px] w-full max-w-[599px] flex-col items-start justify-start gap-3 bg-gray/100 px-3 py-[24px]"
+          class="visitList min-h-[692px] w-full max-w-[599px] flex-col items-start justify-start gap-3 bg-gray/100 px-3 py-[24px]"
         >
           <!-- #3월 방문 -->
           <!-- 테마 타이틀 -->
-          <li class="justify-center gap-1 p-1">
+          <li class="visitItem justify-center gap-1 p-1">
             <div class="text-base font-semibold leading-normal text-black">
               3월 방문
             </div>
@@ -197,10 +200,7 @@
                   >3.8.수•1번째 방문</span
                 >
                 <div class="absolute right-0 flex">
-                  <img
-                    src="./../../assets/icons/swiper/heart.svg"
-                    alt="하트 아이콘"
-                  />
+                  <img src="/assets/icons/swiper/heart.svg" alt="하트 아이콘" />
                   <img
                     src="/assets/icons/swiper/more.svg"
                     alt="더보기 아이콘"
@@ -228,7 +228,7 @@
                 </div>
                 <img
                   class="flex h-[72px] w-20 items-center justify-center gap-1 rounded-[3px]"
-                  src="/assets/images/ImagefieldFeed1.png"
+                  src="/assets/images/theme/Image-field-feed1.png"
                   alt="/"
                 />
               </div>
@@ -251,10 +251,7 @@
                   >3.8.수•1번째 방문</span
                 >
                 <div class="absolute right-0 flex">
-                  <img
-                    src="./../../assets/icons/swiper/heart.svg"
-                    alt="하트 아이콘"
-                  />
+                  <img src="/assets/icons/swiper/heart.svg" alt="하트 아이콘" />
                   <img
                     src="/assets/icons/swiper/more.svg"
                     alt="더보기 아이콘"
@@ -265,7 +262,8 @@
                 >파운드 외 2 • 12,300원</span
               >
               <button
-                class="mt-1 flex h-[30px] w-full max-w-[599px] items-center justify-center rounded-md bg-lightBlue800 px-[96px] py-4"
+                onclick="location.href='/pages/visit/visitLike.html'"
+                class="mt-1 flex h-[30px] w-full max-w-[599px] items-center justify-center rounded-md bg-lightblue/800 px-[96px] py-4"
               >
                 <img src="/assets/icons/swiper/pencil2.svg" alt="연필 아이콘" />
                 <span class="text-xs text-white">text</span>
@@ -282,10 +280,10 @@
         <!-- 공통내비 -->
         <h2 class="sr-only">메인 메뉴</h2>
         <ul class="flex justify-between">
-          <li class="self-end">
+          <li class="mr-[8px] self-end">
             <a
-              href="/"
-              class="mr-[8px] flex flex-col items-center justify-center px-3 py-2"
+              href="/pages/theme/map.html"
+              class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
                 src="/assets/icons/map.svg"
@@ -296,34 +294,37 @@
               <span class="text-xs tracking-tighter">지도</span>
             </a>
           </li>
-          <li class="self-end">
-            <a href="/" class="mr-[2px] flex flex-col items-center px-3 py-2">
+          <li class="mr-[2px] self-end">
+            <a
+              href="/pages/theme/themeEnroll2.html"
+              class="flex flex-col items-center px-3 py-2"
+            >
               <img
                 src="/assets/icons/save.svg"
                 alt=""
                 aria-hidden="true"
-                class="w-[22px]"
+                class="mt-[2px] w-[22px]"
               />
-              <span class="mt-[2px] text-xs tracking-tighter">저장</span>
+              <span class="mt-[3px] text-xs tracking-tighter">저장</span>
             </a>
           </li>
           <li class="self-end">
             <a
-              href="/"
+              href="/pages/theme/map.html"
               class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
                 src="/assets/icons/subway.svg"
                 alt=""
                 aria-hidden="true"
-                class="w-6"
+                class="mt-1 w-6"
               />
               <span class="mt-[2px] text-xs tracking-tighter">대중교통</span>
             </a>
           </li>
           <li class="self-end">
             <a
-              href="/"
+              href="/pages/theme/map.html"
               class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
@@ -332,21 +333,21 @@
                 aria-hidden="true"
                 class="w-7"
               />
-              <span class="text-xs tracking-tighter">내비게이션</span>
+              <span class="mt-[1px] text-xs tracking-tighter">내비게이션</span>
             </a>
           </li>
           <li class="self-end">
             <a
-              href="/"
+              href="/pages/theme/themepage.html"
               class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
                 src="/assets/icons/my.svg"
                 alt=""
                 aria-hidden="true"
-                class="w-6"
+                class="mt-[2px] w-6"
               />
-              <span class="mt-[1px] text-xs tracking-tighter">MY</span>
+              <span class="mt-1 text-xs tracking-tighter">MY</span>
             </a>
           </li>
         </ul>

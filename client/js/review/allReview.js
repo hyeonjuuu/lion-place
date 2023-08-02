@@ -1,4 +1,10 @@
-import { getNode as $, insertLast, delayP, tiger } from "/lib/index.js";
+import {
+  getNode as $,
+  getNodes,
+  insertLast,
+  delayP,
+  tiger,
+} from "/lib/index.js";
 
 const nav = $("nav");
 const list = getNodes("nav ul li");
@@ -12,13 +18,40 @@ function onHandleActive(e) {
 }
 nav.addEventListener("click", onHandleActive);
 
+const tabList = document.querySelectorAll(".topNavItem");
+const tabConts = document.querySelectorAll(".tabCont");
+
+for (let i = 0; i < tabList.length; i++) {
+  tabList[i].querySelector("a").addEventListener("click", function (e) {
+    e.preventDefault();
+    for (let j = 0; j < tabConts.length; j++) {
+      tabList[j]
+        .querySelector("a")
+        .classList.remove(
+          "is-active",
+          "border-b-2",
+          "border-lightblue/300",
+          "text-lightblue/300",
+        );
+      tabConts[j].style.display = "none";
+    }
+    this.classList.add(
+      "is-active",
+      "border-b-2",
+      "border-lightblue/300",
+      "text-lightblue/300",
+    );
+    tabConts[i].style.display = "block";
+  });
+}
+
 const reviewList = $(".reviewList");
 
 async function renderUserList() {
   try {
     await delayP();
 
-    const response = await tiger.get("http://localhost:3000/reviewChoice");
+    const response = await tiger.get("http://localhost:3000/allReview");
     const userData = response.data;
     console.log(userData);
 
@@ -34,33 +67,48 @@ renderUserList();
 
 //생성 (생성하는 함수는 export할 필요 x)
 function createUserCard({
+  userImage = "",
+  userImageAlt = "",
+  userId = "",
+  visitNum = "",
+  date = "",
   image = "",
   alt = "",
-  store = "",
   description = "",
-  location = "",
-  visitDate = "",
 }) {
   const template = `
-  <li class="reviewItem mt4 overflow-hidden rounded2xl bg-white">
-  <li class="reviewItem mt4 overflow-hidden rounded2xl bg-white">
-    <a href="/" class="flex">
-      <figure>
-        <img src="${image}" alt="${alt}" />
-      </figure>
-      <div
-        class="flex flex-shrink-0 flex-grow flex-col justify-center p3 pr-3"
-        class="flex flex-shrink-0 flex-grow flex-col justify-center p3 pr-3"
+  <li class="reviewItem border-b border-gray/300 px-4 py-3">
+    <a href="#" class="flex gap-4">
+      <div>
+        <p
+          class="line-clamp-4 overflow-hidden text-ellipsis text-xs text-gray/500"
+        >
+          ${description}
+        </p>
+      </div>
+      <figure
+        class="flex-shrink-0 basis-20 h20 overflow-hidden rounded posRelative"
       >
-        <h3 class="flex justify-between space-x-2 font-semibold">
-          ${store}<i class="inline-block"
-            ><img
-              src="/assets/icons/call.svg"
-              alt="전화기 아이콘"
-          /></i>
-        </h3>
-        <p>${description}</p>
-        <p><span>${location}</span> | <span>${visitDate} </span>방문</p>
+        <img class="posAbsolute top50 left50 translate50 minWidth28"
+          src="${image}"
+          alt="${alt}"
+        />
+      </figure>
+    </a>
+    <a href="#" class="userInfo mt-2 flex items-center gap-2">
+      <figure
+        class="userImage h-7 w-7 flex-shrink-0 overflow-hidden rounded-full bg-lightblue/900"
+      >
+        <img src="${userImage}" alt="${userImageAlt}" />
+      </figure>
+      <div class="userProfile flex-shrink-0 font-semibold">
+        <p class="userId text-xs">${userId}</p>
+        <p class="visitInfo text-xs text-gray/300">
+          <span class="date">${date}</span> •
+          <span class="visitNum"><strong>${visitNum}</strong>번째 방문</span>
+          •
+          <span class="receipt">영수증</span>
+        </p>
       </div>
     </a>
   </li>
@@ -123,4 +171,14 @@ function renderUserCard(target, data) {
 
 function renderEmptyCard(target) {
   insertLast(target, createEmptyCard());
+}
+
+function clearContents(node) {
+  if (typeof node === "string") node = getNode(node);
+  if (node.nodeName === "INPUT" || node.nodeName === "TEXTAREA") {
+    node.value = "";
+    return;
+  }
+
+  node.textContent = "";
 }

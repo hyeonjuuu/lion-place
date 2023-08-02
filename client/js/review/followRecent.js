@@ -1,66 +1,158 @@
-import { getNode as $, insertLast, delayP, tiger } from "/lib/index.js";
+import {
+  getNode as $,
+  getNodes,
+  insertLast,
+  delayP,
+  tiger,
+  attr,
+  addClass,
+  removeClass,
+} from "/lib/index.js";
 
 const nav = $("nav");
-const list = getNodes("nav ul li");
+const navList = getNodes("nav ul li");
 
 function onHandleActive(e) {
   let target = e.target.closest("li");
 
-  if (!target || !list) return;
+  if (!target || !navList) return;
 
   target.classList.add("is-activeNav");
 }
 nav.addEventListener("click", onHandleActive);
 
-const reviewList = $(".reviewList");
+// const words = [
+//   "spray",
+//   "limit",
+//   "elite",
+//   "exuberant",
+//   "destruction",
+//   "present",
+// ];
+
+// const result = words.filter((word) => word.length > 6);
+
+// /* 요소 걸러내기 --------------------------- */
+
+// // filter : 배열을 반환
+// const filter = people.filter((item) => {
+//   return item.id > 2;
+// });
+
+// console.log(filter);
+
+// console.log(result);
+// // Expected output: Array ["exuberant", "destruction", "present"]
+
+const cardList = $(".cardList");
 
 async function renderUserList() {
   try {
     await delayP();
 
-    const response = await tiger.get("http://localhost:3000/reviewChoice");
+    const response = await tiger.get("http://localhost:3000/followRecent");
     const userData = response.data;
     console.log(userData);
 
-    userData.forEach((item) => renderUserCard(reviewList, item));
+    userData.forEach((item) => renderUserCard(cardList, item));
   } catch (err) {
     console.log(err);
-    renderEmptyCard(reviewList);
+    renderEmptyCard(cardList);
     // location.href = '404.html'
   }
 }
 
 renderUserList();
 
+const tabMenu = $(".tabMenu");
+const tabMenuUl = $(".tabMenu ul");
+const list = [...tabMenuUl.children];
+
+async function filter(e) {
+  const response = await tiger.get("http://localhost:3000/followRecent");
+  const userData = response.data;
+  userData.forEach((item) => renderUserCard(cardList, item));
+  //let result = userData.filter((value) => value.dataFilter == filter);
+  //console.log(result);
+  const target = e.target.closest("li");
+  const anchor = e.target.closest("button");
+  const filter = attr(target, "data-filter");
+  const filterValue = userData.filter((value) => value.dataFilter);
+  console.log(filterValue);
+  let result = userData.filter(
+    (value) => value.dataFilter == anchor.textContent,
+  );
+
+  let objElem = userData[0];
+  let objKey = Object.keys(objElem)[0]; //key를구하고
+  let objValue = objElem[Object.keys(objElem)[0]];
+  console.log(objValue);
+
+  //console.log(result);
+
+  // for (const item of userData) {
+  //   if (userData.filterValue.includes(anchor.textContent)) {
+  //     item.style.display = "block";
+  //   } else {
+  //     item.style.display = "none";
+  //   }
+  // }
+
+  // clearContents(cardList);
+  // renderUserCard(cardList, result);
+
+  list.forEach((li) => {
+    removeClass(li, "bg-gray-500");
+    removeClass(li, "text-white");
+  });
+  addClass(target, "bg-gray-500");
+  addClass(target, "text-white");
+}
+
+tabMenu.addEventListener("click", filter);
+
 //생성 (생성하는 함수는 export할 필요 x)
 function createUserCard({
+  dataFilter = "",
+  store = "",
+  location = "",
+  description = "",
+  hashTag = "",
   image = "",
   alt = "",
-  store = "",
-  description = "",
-  location = "",
-  visitDate = "",
 }) {
   const template = `
-  <li class="reviewItem mt4 overflow-hidden rounded2xl bg-white">
-  <li class="reviewItem mt4 overflow-hidden rounded2xl bg-white">
-    <a href="/" class="flex">
-      <figure>
-        <img src="${image}" alt="${alt}" />
-      </figure>
+    <li
+    class="reviewItem bd-gray-200 mt4 overflow-hidden rounded2xl border bg-white p3 shadowBase"
+    data-filter="${dataFilter}"
+  >
+    <a href="/" class="pl-3 pr-3">
+      <h3 class="tex-base font-semibold">
+        ${store}
+        <span class="place text-xs text-gray300">${location}</span>
+      </h3>
       <div
-        class="flex flex-shrink-0 flex-grow flex-col justify-center p3 pr-3"
-        class="flex flex-shrink-0 flex-grow flex-col justify-center p3 pr-3"
+        class="mt-3 flex flex-shrink-0 flex-grow items-center justify-between gap4"
       >
-        <h3 class="flex justify-between space-x-2 font-semibold">
-          ${store}<i class="inline-block"
-            ><img
-              src="/assets/icons/call.svg"
-              alt="전화기 아이콘"
-          /></i>
-        </h3>
-        <p>${description}</p>
-        <p><span>${location}</span> | <span>${visitDate} </span>방문</p>
+        <div class="description">
+          <p
+            class="block overflow-hidden textEllipsis text-gray-600 lineClamp-2 webkitBox webkitBoxVertical"
+          >
+            ${description}
+          </p>
+          <div class="hashTagArea mt3">
+            <span
+              class="hashTag rounded-sm bg-gray50 p2 text-gray-600"
+              >${hashTag[0]}</span
+            ><span
+              class="hashTag ml1 rounded-sm bg-gray50 p2 text-gray-600"
+              >${hashTag[1]}</span
+            >
+          </div>
+        </div>
+        <figure class="overflow-hidden roundedBase basis-20 h20 shrink0 posRelative">
+          <img class="posAbsolute left50 top50 translate50 minWidth40" src="${image}" alt="${alt}" />
+        </figure>
       </div>
     </a>
   </li>
@@ -123,4 +215,14 @@ function renderUserCard(target, data) {
 
 function renderEmptyCard(target) {
   insertLast(target, createEmptyCard());
+}
+
+function clearContents(node) {
+  if (typeof node === "string") node = getNode(node);
+  if (node.nodeName === "INPUT" || node.nodeName === "TEXTAREA") {
+    node.value = "";
+    return;
+  }
+
+  node.textContent = "";
 }

@@ -7,23 +7,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" type="image/xml+svg" />
   <link rel="stylesheet" href="/css/main.css" />
-  <script src="/js/main.js" type="module"></script>
+  <script src="/js/login/login1.js" type="module"></script>
   <title>project</title>
 </head>
 
 <body class="font-pretendard bg-lightblue/900">
   <div class="min-w-[320px] max-w-[599px] mx-auto">
     <div class="w-auto">
-      <img src="/assets/login/Frame 60.png" alt="Lion Place" class="mx-auto py-12" />
+      <img src="/assets/images/login/map-pin.svg" alt="" aria-hidden="true" class="mx-auto pt-10 w-6" />
+      <h1 class="mb-10 flex justify-center text-10 text-white font-black">Lion Place</h1>
 
       <div class=" container mx-auto px-12 py-4">
-        <form class="w-auto-60">
-          <h1 class="text-white text-2xl py-6">로그인</h1>
-          <input class="container mx-auto px-3 h-10 mb-3 text-white text-xs bg-lightblue/900 border  rounded"
-            placeholder="아이디를 입력해주세요" label="username" type="text" id="userid" />
+        <form class="w-auto-1">
+          <h1 class="text-white text-2xl py-6 font-black">로그인</h1>
+          <input class="userid container mx-auto px-3 h-10 mb-3 text-white text-xs bg-lightblue/900 border  rounded"
+            placeholder="아이디를 입력해주세요" label="username" type="text"" />
 
-          <input class="container mx-auto px-3 h-10 mb-3 text-white text-xs bg-lightblue/900 border  rounded"
-            placeholder="비밀번호를 입력해주세요" label="password" type="text" id="userpw" />
+          <input class=" userpw container mx-auto px-3 h-10 mb-3 text-white text-xs bg-lightblue/900 border rounded"
+            placeholder="비밀번호를 입력해주세요" label="password" type="text" />
 
           <div class="mb-5 flex justify-end">
             <a href="#" class="text-xs text-white ">아이디 찾기</a>
@@ -33,11 +34,11 @@
 
           <div class="container mx-auto py-4">
             <div class="container mx-auto">
-              <button href="메인 주소 입력해야함!!!!!!!!!" type="button" label="loginBtn" class="container mx-auto text-xs bg-white hover:bg-gray-300 text-black font-bold 
+              <button href="/pages/theme/themepage.html" type="button" class="loginBtn container mx-auto text-xs bg-white hover:bg-gray-300 text-black font-bold 
               py-4 px-4 mb-1 rounded">로그인</button>
             </div>
             <div class="container mx-auto py-3">
-              <button href="/login/02.login.html" type="submit" class="container mx-auto text-xs border bg-lightblue/900 hover:bg-gray-700 text-white font-bold 
+              <button href="/pages/login/02.login.html" type="submit" class="container mx-auto text-xs border bg-lightblue/900 hover:bg-gray-700 text-white font-bold 
               py-4 px-4 mb-10 rounded">회원가입</button>
             </div>
         </form>

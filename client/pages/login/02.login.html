@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+      type="image/xml+svg"
+    />
+    <link rel="stylesheet" href="/css/main.css" />
+    <script src="/js/login/login2.js" type="module"></script>
+    <title>project</title>
+  </head>
+
+  <body class="bg-lightblue/900 font-pretendard">
+    <div class="min-w-[320px] max-w-[599px]">
+      <div class="w-auto">
+        <img
+          src="/assets/images/login/map-pin.svg"
+          alt=""
+          aria-hidden="true"
+          class="mx-auto w-6 pt-10"
+        />
+        <h1
+          class="mb-10 flex justify-center gap-y-10 text-2xl font-black text-white"
+        >
+          Lion Place
+        </h1>
+      </div>
+      <div class="container mx-auto px-10 py-2">
+        <h1 class="mb-6 text-2xl text-white">회원가입</h1>
+        <form
+          class="w-auto-60 form-login"
+          action="ok.html"
+          method="POST"
+          onsubmit="return login();"
+        >
+          <div>
+            <label class="mb-1 block text-xs font-medium text-white"
+              >아이디</label
+            >
+            <input
+              class="userid id container mx-auto mb-3 h-8 rounded-sm border bg-lightblue/900 px-3 text-xs text-white"
+              placeholder="영문 3자 이상"
+              label="username"
+              type="text"
+            />
+          </div>
+
+          <div class="text-white">
+            <label class="mb-1 block text-xs font-medium text-white"
+              >이메일</label
+            >
+            <input
+              class="userEmail container mx-auto mb-3 h-8 rounded-sm border bg-lightblue/900 px-3 text-xs text-white"
+              placeholder="인증 가능한 이메일 주소"
+              label="Email"
+              type="text"
+            />
+          </div>
+
+          <div class="text-white">
+            <label class="mb-1 block text-xs font-medium text-white"
+              >비밀번호</label
+            >
+            <input
+              class="userpw container mx-auto mb-3 h-8 rounded-sm border bg-lightblue/900 px-3 text-xs text-white"
+              placeholder="8문자 이상, 특수 문자 포함"
+              label="password"
+              type="text"
+            />
+          </div>
+
+          <div class="text-white">
+            <label class="mb-1 block text-xs font-medium text-white"
+              >비밀번호 확인</label
+            >
+            <input
+              class="pwcheck container mx-auto mb-14 h-8 rounded-sm border bg-lightblue/900 px-3 text-xs text-white"
+              placeholder="8문자 이상, 특수 문자 포함"
+              label="passwordcheck"
+              type="text"
+            />
+          </div>
+          <button
+            href="/pages/theme/themepage.html"
+            type="button"
+            id="loginBtn"
+            class="focus:shadow-outline mb-2 w-full rounded bg-white px-4 py-2 font-bold text-black hover:bg-gray-300 focus:outline-none"
+          >
+            로그인
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
