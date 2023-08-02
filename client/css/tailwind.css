@@ -4,23 +4,21 @@
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css");
 
-.marker{
-  display: flex;
-  align-items: center;
-  position: relative;
-  background: white;
-  border: 1px solid #8DB0F9;
-  border-radius: 30px;
-  font-family: 'pretendard';
-  font-weight: 600;
-  font-size: 12px;
-  padding: 4px 2rem 4px 4px;
-  width: 100%;
+.marker {
+  @apply relative flex w-full items-center rounded-3xl border border-solid border-secondary
+    bg-white py-1 pl-1 pr-8 font-pretendard text-xs font-semibold;
 }
 
-.markerImg{
+.markerImg {
   aspect-ratio: 1/1;
   border-radius: 50%;
-  width: 24px;
-  height: 24px;
+  @apply h-6 w-6;
 }
+
+.is-activeNav {
+  @apply border-t-2 border-solid border-black;
+}
+
+/* .empty-data{
+  @apply flex flex-col justify-center
+} */

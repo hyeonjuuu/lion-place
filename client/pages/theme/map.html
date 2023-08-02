@@ -11,10 +11,11 @@
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css"
     />
     <link rel="stylesheet" href="/css/main.css" />
+    <!-- services와 clusterer, drawing 라이브러리 불러오기 -->
     <script
-      type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=25319638cf6e1239fa6f8c8fa0ce21df"
-    ></script>
+    type="text/javascript"
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=25319638cf6e1239fa6f8c8fa0ce21df&libraries=services,clusterer,drawing"
+  ></script>
     <script src="/js/map/map.js" type="module"></script>
   </head>
   <body class="font-pretendard">
@@ -33,28 +34,22 @@
               aria-hidden="true"
             />
           </div>
+          
           <img src="/assets/icons/battery.svg" alt="" aria-hidden="true" />
           <span class="px-1 text-xs font-bold" aria-hidden="true">LTE</span>
           <img src="/assets/icons/4g.svg" alt="" aria-hidden="true" />
         </div>
         <!-- 위치정보 표시 -->
-        <div
-          class="fixed top-10 z-50 flex w-full max-w-[599px] items-center bg-white px-[18px] py-2"
-        >
-          <a href="/"
+        <div 
+          class="fixed top-10 z-50 flex w-full max-w-[599px] items-center bg-white px-[18px] py-2" >
+          <a href="/pages/theme/themeEnroll2.html"
             ><img
               src="/assets/icons/left-black.svg"
               alt="뒤로가기"
               class="h-[30px] w-[30px]"
           /></a>
           <p class="flex-grow">연남/합정 데이트</p>
-          <button
-            type="button"
-            class="rounded-3xl border border-solid border-black px-2 py-1 text-xs font-semibold"
-          >
-            임시저장
-          </button>
-          <a href="/">
+          <a href="#">
             <img src="/assets/icons/more.svg" alt="더보기" />
           </a>
         </div>
@@ -65,10 +60,10 @@
         <!-- 공통내비 -->
         <h2 class="sr-only">메인 메뉴</h2>
         <ul class="flex justify-between">
-          <li class="self-end">
+          <li class="self-end mr-[8px]">
             <a
-              href="/"
-              class="mr-[8px] flex flex-col items-center justify-center px-3 py-2"
+              href="/pages/theme/map.html"
+              class=" flex flex-col items-center justify-center px-3 py-2"
             >
               <img
                 src="/assets/icons/map.svg"
@@ -79,34 +74,34 @@
               <span class="text-xs tracking-tighter">지도</span>
             </a>
           </li>
-          <li class="self-end">
-            <a href="/" class="mr-[2px] flex flex-col items-center px-3 py-2">
+          <li class="self-end mr-[2px]">
+            <a href="/pages/theme/themeEnroll2.html" class="flex flex-col items-center px-3 py-2">
               <img
                 src="/assets/icons/save.svg"
                 alt=""
                 aria-hidden="true"
-                class="w-[22px]"
+                class="w-[22px] mt-[2px]"
               />
-              <span class="mt-[2px] text-xs tracking-tighter">저장</span>
+              <span class="mt-[3px] text-xs tracking-tighter">저장</span>
             </a>
           </li>
           <li class="self-end">
             <a
-              href="/"
+              href="/pages/theme/map.html"
               class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
                 src="/assets/icons/subway.svg"
                 alt=""
                 aria-hidden="true"
-                class="w-6"
+                class="w-6 mt-1"
               />
               <span class="mt-[2px] text-xs tracking-tighter">대중교통</span>
             </a>
           </li>
           <li class="self-end">
             <a
-              href="/"
+              href="/pages/theme/map.html"
               class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
@@ -115,44 +110,62 @@
                 aria-hidden="true"
                 class="w-7"
               />
-              <span class="text-xs tracking-tighter">내비게이션</span>
+              <span class="text-xs tracking-tighter mt-[1px]">내비게이션</span>
             </a>
           </li>
           <li class="self-end">
             <a
-              href="/"
+              href="/pages/theme/themepage.html"
               class="flex flex-col items-center justify-center px-3 py-2"
             >
               <img
                 src="/assets/icons/my.svg"
                 alt=""
                 aria-hidden="true"
-                class="w-6"
+                class="w-6 mt-[2px]"
               />
-              <span class="mt-[1px] text-xs tracking-tighter">MY</span>
+              <span class="mt-1 text-xs tracking-tighter">MY</span>
             </a>
           </li>
         </ul>
       </nav>
       <main class="relative">
         <!-- 상단버튼 -->
-        <div id="mapPage" class="mx-4 h-screen"></div>
-        <button type="button" class="absolute  top-24 left-2 z-50 bg-white rounded p-1 shadow-lg border">
+        <div id="mapPage" class="h-screen"></div>
+        <button
+          type="button" id="myLocation"
+          class="absolute left-2 top-24 z-50 rounded border bg-white p-1 shadow-lg"
+        >
           <img src="/assets/icons/start.svg" alt="시작위치" />
         </button>
-        <button type="button" class="flex items-center absolute top-24 left-[50%] -translate-x-1/2 z-50 bg-white py-2 px-4 rounded-3xl border">
+        <button
+          type="button" id="returnHome"
+          class="absolute left-[50%] top-24 z-50 flex -translate-x-1/2 items-center rounded-3xl border bg-white px-4 py-2"
+        >
           <img src="/assets/icons/back.svg" alt="" aria-hidden="true" />
-          <span class="ml-1 text-secondary text-xs font-semibold">원 위치로 돌아가기</span>
+          <span class="ml-1 text-xs font-semibold text-secondary"
+            >원 위치로 돌아가기</span
+          >
         </button>
-        <button type="button" class="absolute  top-24 right-2 z-50 bg-white rounded p-1 shadow-lg border">
+        <button
+          id="roadViewBtn"
+          type="button"
+          class="absolute right-2 top-24 z-50 rounded border bg-white p-1 shadow-lg"
+        >
           <img src="/assets/icons/location-gray.svg" alt="위치정보" />
         </button>
         <!-- 하단버튼 -->
-        <div class="shadow-2xl">
-          <button type="button" class="absolute bottom-32 right-4 bg-white p-1 z-50 border rounded-t-md">
+        <div class="shadow-2xl zoom-control">
+          <button
+            type="button" id="zoomIn"
+            class="absolute bottom-32 right-4 z-50 rounded-t-md border bg-white p-1"
+          >
             <img src="/assets/icons/plus-gray.svg" alt="확대" />
           </button>
-          <button type="button" class="absolute bottom-24 right-4 bg-white p-1 z-50 border rounded-b-md">
+          <button
+            type="button" id="zoomOut"
+            class="absolute bottom-24 right-4 z-50 rounded-b-md border bg-white p-1"
+          >
             <img src="/assets/icons/minus-gray.svg" alt="축소" />
           </button>
         </div>
