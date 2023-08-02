@@ -1,5 +1,6 @@
 import {
   getNode as $,
+  getNodes,
   insertLast,
   delayP,
   tiger,
@@ -9,7 +10,7 @@ import {
 } from "/lib/index.js";
 
 const nav = $("nav");
-const list = getNodes("nav ul li");
+const navList = getNodes("nav ul li");
 
 function onHandleActive(e) {
   let target = e.target.closest("li");

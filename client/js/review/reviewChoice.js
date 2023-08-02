@@ -1,4 +1,4 @@
-import { getNode as $, insertLast, delayP, tiger } from "/lib/index.js";
+import { getNode as $, getNodes,insertLast, delayP, tiger } from "/lib/index.js";
 
 const nav = $("nav");
 const list = getNodes("nav ul li");
@@ -55,7 +55,7 @@ function createUserCard({
         <h3 class="flex justify-between space-x-2 font-semibold">
           ${store}<i class="inline-block"
             ><img
-              src="/assets/icons/call.svg"
+              src="/assets/icons/call-black.svg"
               alt="전화기 아이콘"
           /></i>
         </h3>

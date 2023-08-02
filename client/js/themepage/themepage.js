@@ -1,7 +1,5 @@
 import { getNode, getNodes } from "/lib/dom/getNode.js";
 
-getNode;
-getNodes;
 
 function addClass(element, className) {
   if (!element.classList.contains(className)) {
