@@ -592,10 +592,6 @@ video {
   position: relative;
 }
 
-.sticky {
-  position: sticky;
-}
-
 .-bottom-2 {
   bottom: -0.5rem;
 }
@@ -1343,6 +1339,10 @@ video {
 
 .max-w-\[599px\] {
   max-width: 599px;
+}
+
+.max-w-\[1920px\] {
+  max-width: 1920px;
 }
 
 .flex-shrink-0 {

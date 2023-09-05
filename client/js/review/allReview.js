@@ -22,7 +22,7 @@ function handleScroll() {
 
 window.addEventListener("scroll", handleScroll);
 
-var slide = new Swiper(".swiper", {
+const slide = new Swiper(".swiper", {
   slidesPerView: "1",
   loop: false,
   pagination: true,
